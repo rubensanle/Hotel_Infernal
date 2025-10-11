@@ -2,32 +2,43 @@ using UnityEngine;
 
 public class InteractionScript : MonoBehaviour
 {
-    public float distancia = 2f; 
+    public float distancia = 2f;  
     public Color initialColor = Color.yellow; 
     public Camera playerCamera; 
     private GameObject objetoInter;
     private Renderer cubeRenderer;
     private bool cerca = false;
+    private float timer = 10f; 
+    private int interactionCount = 0; 
+    private bool isTimerStopped = false; 
+    private bool isCubeAngry = false; 
+    private CubeBehaviorScript cubeBehavior; 
+
 
     void Start()
     {
-        RaycastHit hit;
-        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, distancia))
+        // Busca el cubo al inicio
+        GameObject[] interactables = GameObject.FindGameObjectsWithTag("Inter");
+        if (interactables.Length > 0)
         {
-            if (hit.collider.CompareTag("Inter"))
+            objetoInter = interactables[0];
+            if (objetoInter.TryGetComponent(out cubeRenderer))
             {
-                Renderer renderer = hit.collider.GetComponent<Renderer>();
-                if (renderer != null)
-                {
-                    renderer.material.color = initialColor;
-                    Debug.Log("Color inicial asignado: " + initialColor);
-                }
+                cubeRenderer.material.color = initialColor;
+                Debug.Log("Color inicial asignado: " + initialColor);
             }
+            cubeBehavior = objetoInter.AddComponent<CubeBehaviorScript>(); 
         }
     }
 
     void Update()
     {
+        if (playerCamera == null)
+        {
+            Debug.LogError("playerCamera no está asignado en el Inspector. Asigna la cámara para evitar este error.");
+        }
+
+        // Realiza el raycast
         RaycastHit hit;
         if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, distancia))
         {
@@ -57,12 +68,43 @@ public class InteractionScript : MonoBehaviour
             Debug.Log("No se detectó ningún objeto");
         }
 
+        if (!isTimerStopped && !isCubeAngry)
+        {
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                if (interactionCount < 3)
+                {
+                    isCubeAngry = true;
+                    cubeBehavior.StartJumping(); 
+                    Debug.Log("¡El cubo está enfadado! Comienza a saltar.");
+                }
+                timer = 0f; 
+            }
+        }
+
         if (cerca && Input.GetKeyDown(KeyCode.E))
         {
             if (cubeRenderer != null)
             {
                 cubeRenderer.material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f); 
                 Debug.Log("Color cambiado a un color aleatorio");
+                if (!isCubeAngry)
+                {
+                    interactionCount++;
+                    if (interactionCount >= 3)
+                    {
+                        isTimerStopped = true;
+                        Debug.Log("¡Has interactuado 3 veces! Temporizador detenido.");
+                    }
+                }
+                else
+                {
+                    isCubeAngry = false;
+                    cubeBehavior.StopJumping();
+                    isTimerStopped = true; 
+                    Debug.Log("¡El cubo se ha calmado");
+                }
             }
         }
     }
@@ -72,12 +114,26 @@ public class InteractionScript : MonoBehaviour
         if (cerca)
         {
             GUIStyle style = new GUIStyle();
-            style.fontSize = 20; 
-            style.normal.textColor = Color.white; 
+            style.fontSize = 20;
+            style.normal.textColor = Color.white;
             float x = (Screen.width - 200) / 2; 
             float y = Screen.height - 100; 
             GUI.Label(new Rect(x, y, 200, 50), "Press E to interact", style);
-            Debug.Log("Mostrando mensaje 'Press E to interact' en posición: " + x + ", " + y);
+        }
+
+        if (!isTimerStopped && !isCubeAngry)
+        {
+            GUIStyle timerStyle = new GUIStyle();
+            timerStyle.fontSize = 16;
+            timerStyle.normal.textColor = Color.white;
+            GUI.Label(new Rect(10, 10, 150, 30), "Time: " + Mathf.Ceil(timer).ToString() + "s", timerStyle);
+        }
+        else if (timer <= 0)
+        {
+            GUIStyle timerStyle = new GUIStyle();
+            timerStyle.fontSize = 16;
+            timerStyle.normal.textColor = Color.red; 
+            GUI.Label(new Rect(10, 10, 150, 30), "Time: 0s", timerStyle);
         }
     }
 
