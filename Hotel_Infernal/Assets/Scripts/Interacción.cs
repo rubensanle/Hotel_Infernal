@@ -3,7 +3,7 @@ using UnityEngine;
 public class InteractionScript : MonoBehaviour
 {
     public float distancia = 2f;  
-    public Color initialColor = Color.yellow; 
+    public Color initialColor = Color.aliceBlue; 
     public Camera playerCamera; 
     private GameObject objetoInter;
     private Renderer cubeRenderer;
@@ -17,7 +17,6 @@ public class InteractionScript : MonoBehaviour
 
     void Start()
     {
-        // Busca el cubo al inicio
         GameObject[] interactables = GameObject.FindGameObjectsWithTag("Inter");
         if (interactables.Length > 0)
         {
@@ -38,7 +37,6 @@ public class InteractionScript : MonoBehaviour
             Debug.LogError("playerCamera no está asignado en el Inspector. Asigna la cámara para evitar este error.");
         }
 
-        // Realiza el raycast
         RaycastHit hit;
         if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, distancia))
         {
@@ -76,8 +74,9 @@ public class InteractionScript : MonoBehaviour
                 if (interactionCount < 3)
                 {
                     isCubeAngry = true;
+                    cubeRenderer.material.color = Color.darkRed;
                     cubeBehavior.StartJumping(); 
-                    Debug.Log("¡El cubo está enfadado! Comienza a saltar.");
+                    Debug.Log("El cubo está enfadado");
                 }
                 timer = 0f; 
             }
@@ -88,22 +87,23 @@ public class InteractionScript : MonoBehaviour
             if (cubeRenderer != null)
             {
                 cubeRenderer.material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f); 
-                Debug.Log("Color cambiado a un color aleatorio");
+                Debug.Log("Color cambiado");
                 if (!isCubeAngry)
                 {
                     interactionCount++;
                     if (interactionCount >= 3)
                     {
                         isTimerStopped = true;
-                        Debug.Log("¡Has interactuado 3 veces! Temporizador detenido.");
+                        Debug.Log("Has interactuado 3 veces, temporizador detenido.");
                     }
                 }
                 else
                 {
                     isCubeAngry = false;
+                    cubeRenderer.material.color = initialColor;
                     cubeBehavior.StopJumping();
                     isTimerStopped = true; 
-                    Debug.Log("¡El cubo se ha calmado");
+                    Debug.Log("El cubo se ha calmado");
                 }
             }
         }
@@ -118,7 +118,7 @@ public class InteractionScript : MonoBehaviour
             style.normal.textColor = Color.white;
             float x = (Screen.width - 200) / 2; 
             float y = Screen.height - 100; 
-            GUI.Label(new Rect(x, y, 200, 50), "Press E to interact", style);
+            GUI.Label(new Rect(x, y, 200, 50), "Presiona E para interactuar", style);
         }
 
         if (!isTimerStopped && !isCubeAngry)
@@ -126,14 +126,14 @@ public class InteractionScript : MonoBehaviour
             GUIStyle timerStyle = new GUIStyle();
             timerStyle.fontSize = 16;
             timerStyle.normal.textColor = Color.white;
-            GUI.Label(new Rect(10, 10, 150, 30), "Time: " + Mathf.Ceil(timer).ToString() + "s", timerStyle);
+            GUI.Label(new Rect(10, 10, 150, 30), "Tiempo: " + Mathf.Ceil(timer).ToString() + "s", timerStyle);
         }
         else if (timer <= 0)
         {
             GUIStyle timerStyle = new GUIStyle();
             timerStyle.fontSize = 16;
             timerStyle.normal.textColor = Color.red; 
-            GUI.Label(new Rect(10, 10, 150, 30), "Time: 0s", timerStyle);
+            GUI.Label(new Rect(10, 10, 150, 30), "Tiempo: 0s", timerStyle);
         }
     }
 
