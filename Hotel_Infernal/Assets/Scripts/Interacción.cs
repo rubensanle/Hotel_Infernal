@@ -1,59 +1,64 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class InteractionScript : MonoBehaviour
 {
-    public float distancia = 2f;  
-    public Color initialColor = Color.aliceBlue; 
-    public Camera playerCamera; 
+    public float distancia = 2f;
+    public Camera playerCamera;
     private GameObject objetoInter;
     private Renderer cubeRenderer;
+    private CubeBehaviorScript cubeBehavior;
     private bool cerca = false;
-    private float timer = 10f; 
-    private int interactionCount = 0; 
-    private bool isTimerStopped = false; 
-    private bool isCubeAngry = false; 
-    private CubeBehaviorScript cubeBehavior; 
 
+    private float timer = 60f; // 🔥 Temporizador común para todos
+    private bool isTimerStopped = false;
+
+    private class CubeState
+    {
+        public Color initialColor;
+        public int interactionCount = 0;
+        public bool isCubeAngry = false;
+    }
+
+    private Dictionary<GameObject, CubeState> cubeStates = new Dictionary<GameObject, CubeState>();
 
     void Start()
     {
+        if (playerCamera == null)
+            Debug.LogError("Asigna la cámara del jugador en el inspector.");
+
         GameObject[] interactables = GameObject.FindGameObjectsWithTag("Inter");
-        if (interactables.Length > 0)
+
+        foreach (GameObject inter in interactables)
         {
-            objetoInter = interactables[0];
-            if (objetoInter.TryGetComponent(out cubeRenderer))
+            if (inter.TryGetComponent(out Renderer rend))
             {
-                cubeRenderer.material.color = initialColor;
-                Debug.Log("Color inicial asignado: " + initialColor);
+                Color color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+                rend.material.color = color;
+
+                cubeStates[inter] = new CubeState
+                {
+                    initialColor = color
+                };
+
+                if (!inter.TryGetComponent(out CubeBehaviorScript behavior))
+                    inter.AddComponent<CubeBehaviorScript>();
             }
-            cubeBehavior = objetoInter.AddComponent<CubeBehaviorScript>(); 
         }
     }
 
     void Update()
     {
-        if (playerCamera == null)
-        {
-            Debug.LogError("playerCamera no está asignado en el Inspector. Asigna la cámara para evitar este error.");
-        }
-
+        // --- Detección de interacción con cubo ---
         RaycastHit hit;
         if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, distancia))
         {
-            Debug.Log("Raycast hit: " + hit.collider.name);
             if (hit.collider.CompareTag("Inter"))
             {
                 objetoInter = hit.collider.gameObject;
-                if (objetoInter.TryGetComponent(out cubeRenderer))
-                {
-                    cerca = true;
-                    Debug.Log("Objeto interactuable detectado: " + objetoInter.name);
-                }
-                else
-                {
-                    cerca = false;
-                    Debug.LogWarning("Objeto sin Renderer: " + objetoInter.name);
-                }
+                cubeRenderer = objetoInter.GetComponent<Renderer>();
+                cubeBehavior = objetoInter.GetComponent<CubeBehaviorScript>();
+                cerca = true;
             }
             else
             {
@@ -63,52 +68,79 @@ public class InteractionScript : MonoBehaviour
         else
         {
             cerca = false;
-            Debug.Log("No se detectó ningún objeto");
         }
 
-        if (!isTimerStopped && !isCubeAngry)
+        // --- Temporizador global ---
+        if (!isTimerStopped)
         {
             timer -= Time.deltaTime;
+
+            // 🔥 Si el tiempo se acaba, enfadar cubos que no se interactuaron lo suficiente
             if (timer <= 0)
             {
-                if (interactionCount < 3)
+                timer = 0;
+                isTimerStopped = true;
+
+                foreach (var pair in cubeStates)
                 {
-                    isCubeAngry = true;
-                    cubeRenderer.material.color = Color.darkRed;
-                    cubeBehavior.StartJumping(); 
-                    Debug.Log("El cubo está enfadado");
+                    GameObject cube = pair.Key;
+                    CubeState state = pair.Value;
+
+                    if (state.interactionCount < 2 && !state.isCubeAngry)
+                    {
+                        state.isCubeAngry = true;
+                        cube.GetComponent<Renderer>().material.color = Color.red;
+                        cube.GetComponent<CubeBehaviorScript>().StartJumping();
+                        Debug.Log($"El cubo {cube.name} se ha enfadado!");
+                    }
                 }
-                timer = 0f; 
             }
         }
 
+        // --- Interacción con cubo ---
         if (cerca && Input.GetKeyDown(KeyCode.E))
         {
-            if (cubeRenderer != null)
+            if (cubeRenderer != null && cubeStates.ContainsKey(objetoInter))
             {
-                cubeRenderer.material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f); 
-                Debug.Log("Color cambiado");
-                if (!isCubeAngry)
+                CubeState state = cubeStates[objetoInter];
+
+                if (!state.isCubeAngry)
                 {
-                    interactionCount++;
-                    if (interactionCount >= 3)
+                    cubeRenderer.material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+                    state.interactionCount++;
+
+                    Debug.Log($"Cubo {objetoInter.name}: {state.interactionCount} interacciones.");
+
+                    // ✅ Si todos los cubos tienen >=3 interacciones → parar temporizador
+                    bool allCubesDone = true;
+                    foreach (var s in cubeStates.Values)
+                    {
+                        if (s.interactionCount < 3)
+                        {
+                            allCubesDone = false;
+                            break;
+                        }
+                    }
+
+                    if (allCubesDone)
                     {
                         isTimerStopped = true;
-                        Debug.Log("Has interactuado 3 veces, temporizador detenido.");
+                        Debug.Log("✅ Todos los cubos fueron interactuados 3 veces. Temporizador detenido.");
                     }
                 }
                 else
                 {
-                    isCubeAngry = false;
-                    cubeRenderer.material.color = initialColor;
+                    // Calmar cubo
+                    state.isCubeAngry = false;
+                    cubeRenderer.material.color = state.initialColor;
                     cubeBehavior.StopJumping();
-                    isTimerStopped = true; 
-                    Debug.Log("El cubo se ha calmado");
+                    Debug.Log($"Cubo {objetoInter.name} se ha calmado.");
                 }
             }
         }
     }
 
+    // --- GUI siempre visible ---
     void OnGUI()
     {
         if (cerca)
@@ -116,33 +148,15 @@ public class InteractionScript : MonoBehaviour
             GUIStyle style = new GUIStyle();
             style.fontSize = 20;
             style.normal.textColor = Color.white;
-            float x = (Screen.width - 200) / 2; 
-            float y = Screen.height - 100; 
+            float x = (Screen.width - 200) / 2;
+            float y = Screen.height - 100;
             GUI.Label(new Rect(x, y, 200, 50), "Presiona E para interactuar", style);
         }
 
-        if (!isTimerStopped && !isCubeAngry)
-        {
-            GUIStyle timerStyle = new GUIStyle();
-            timerStyle.fontSize = 16;
-            timerStyle.normal.textColor = Color.white;
-            GUI.Label(new Rect(10, 10, 150, 30), "Tiempo: " + Mathf.Ceil(timer).ToString() + "s", timerStyle);
-        }
-        else if (timer <= 0)
-        {
-            GUIStyle timerStyle = new GUIStyle();
-            timerStyle.fontSize = 16;
-            timerStyle.normal.textColor = Color.red; 
-            GUI.Label(new Rect(10, 10, 150, 30), "Tiempo: 0s", timerStyle);
-        }
-    }
-
-    void OnDrawGizmos()
-    {
-        if (playerCamera != null)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawRay(playerCamera.transform.position, playerCamera.transform.forward * distancia);
-        }
+        // 🔥 Temporizador global, siempre visible
+        GUIStyle timerStyle = new GUIStyle();
+        timerStyle.fontSize = 16;
+        timerStyle.normal.textColor = (timer > 0) ? Color.white : Color.red;
+        GUI.Label(new Rect(10, 10, 250, 30), "Tiempo: " + Mathf.Ceil(timer).ToString() + "s", timerStyle);
     }
 }
