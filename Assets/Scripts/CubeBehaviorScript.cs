@@ -7,7 +7,7 @@ public class CubeBehaviorScript : MonoBehaviour
     private float jumpHeight = 1f;
     private float jumpDuration = 0.5f;
     private float jumpTimer = 0f;
-    private float angryJumpInterval = 1f; 
+    private float angryJumpInterval = 1f;
     private float angryTimer = 0f;
 
     void Start()
@@ -23,7 +23,7 @@ public class CubeBehaviorScript : MonoBehaviour
     public void StopJumping()
     {
         isJumping = false;
-        transform.position = originalPosition; 
+        transform.position = originalPosition;
     }
 
     void Update()

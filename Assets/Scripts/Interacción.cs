@@ -10,7 +10,7 @@ public class InteractionScript : MonoBehaviour
     private CubeBehaviorScript cubeBehavior;
     private bool cerca = false;
 
-    private float timer = 60f; // 🔥 Temporizador común para todos
+    private float timer = 60f; 
     private bool isTimerStopped = false;
 
     private class CubeState
@@ -49,7 +49,6 @@ public class InteractionScript : MonoBehaviour
 
     void Update()
     {
-        // --- Detección de interacción con cubo ---
         RaycastHit hit;
         if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, distancia))
         {
@@ -70,12 +69,10 @@ public class InteractionScript : MonoBehaviour
             cerca = false;
         }
 
-        // --- Temporizador global ---
         if (!isTimerStopped)
         {
             timer -= Time.deltaTime;
 
-            // 🔥 Si el tiempo se acaba, enfadar cubos que no se interactuaron lo suficiente
             if (timer <= 0)
             {
                 timer = 0;
@@ -97,7 +94,6 @@ public class InteractionScript : MonoBehaviour
             }
         }
 
-        // --- Interacción con cubo ---
         if (cerca && Input.GetKeyDown(KeyCode.E))
         {
             if (cubeRenderer != null && cubeStates.ContainsKey(objetoInter))
@@ -111,7 +107,6 @@ public class InteractionScript : MonoBehaviour
 
                     Debug.Log($"Cubo {objetoInter.name}: {state.interactionCount} interacciones.");
 
-                    // ✅ Si todos los cubos tienen >=3 interacciones → parar temporizador
                     bool allCubesDone = true;
                     foreach (var s in cubeStates.Values)
                     {
@@ -140,7 +135,6 @@ public class InteractionScript : MonoBehaviour
         }
     }
 
-    // --- GUI siempre visible ---
     void OnGUI()
     {
         if (cerca)
@@ -153,10 +147,10 @@ public class InteractionScript : MonoBehaviour
             GUI.Label(new Rect(x, y, 200, 50), "Presiona E para interactuar", style);
         }
 
-        // 🔥 Temporizador global, siempre visible
         GUIStyle timerStyle = new GUIStyle();
         timerStyle.fontSize = 16;
         timerStyle.normal.textColor = (timer > 0) ? Color.white : Color.red;
         GUI.Label(new Rect(10, 10, 250, 30), "Tiempo: " + Mathf.Ceil(timer).ToString() + "s", timerStyle);
     }
 }
+

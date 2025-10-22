@@ -29,11 +29,13 @@ public class PlayerMovement : MonoBehaviour
             jumpCont = 0;
         }
 
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        // Movimiento horizontal con WASD (sin interpolación)
+        float x = Input.GetAxisRaw("Horizontal");
+        float z = Input.GetAxisRaw("Vertical");
         Vector3 move = transform.right * x + transform.forward * z;
         controller.Move(move.normalized * speed * Time.deltaTime);
 
+        // Salto y doble salto
         if (Input.GetKeyDown(KeyCode.Space))
         {
             float timeSinceLastJump = Time.time - lastJump;
@@ -42,12 +44,10 @@ public class PlayerMovement : MonoBehaviour
             if (jumpCont < 2)
             {
                 if (jumpCont == 1 && timeSinceLastJump > doubleTap)
-                {
                     return;
-                }
 
                 float jumpForce = Mathf.Sqrt(jump * -2f * gravity);
-                if (jumpCont == 1) 
+                if (jumpCont == 1)
                     jumpForce *= doubleJump;
 
                 velocity.y = jumpForce;
@@ -55,10 +55,12 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+        // Aplicar gravedad
         velocity.y += gravity * Time.deltaTime;
         if (velocity.y < -50f)
             velocity.y = -50f;
 
-        controller.Move(velocity * Time.deltaTime);
+        // Movimiento vertical
+        controller.Move(new Vector3(0, velocity.y, 0) * Time.deltaTime);
     }
 }
