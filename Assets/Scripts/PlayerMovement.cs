@@ -1,18 +1,31 @@
 using UnityEngine;
+using System.Collections.Generic;
 
+[RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController controller;
     public float speed = 5f;
+    public float sprintSpeed = 8f;
     public float gravity = -20f;
     public float jump = 3.2f;
     public float doubleJump = 0.6f;
-    public float doubleTap = 0.4f;
+    public float doubleTap = 0.3f;
+
+    public float dashSpeed = 14f;
+    public float dashDuration = 0.4f;
 
     private Vector3 velocity;
     private bool enSuelo;
     private int jumpCont = 0;
     private float lastJump = 0f;
+
+    private bool isDashing = false;
+    private float dashTimer = 0f;
+    private Vector3 dashDirection;
+
+    private Vector3 moveInput;
+    private Dictionary<KeyCode, float> lastKeyPress = new Dictionary<KeyCode, float>();
 
     void Start()
     {
@@ -29,11 +42,37 @@ public class PlayerMovement : MonoBehaviour
             jumpCont = 0;
         }
 
-        // Movimiento horizontal con WASD (sin interpolación)
-        float x = Input.GetAxisRaw("Horizontal");
-        float z = Input.GetAxisRaw("Vertical");
-        Vector3 move = transform.right * x + transform.forward * z;
-        controller.Move(move.normalized * speed * Time.deltaTime);
+        // Detectar doble pulsación para dash con flechas
+        DetectDash(KeyCode.UpArrow, transform.forward);
+        DetectDash(KeyCode.DownArrow, -transform.forward);
+        DetectDash(KeyCode.LeftArrow, -transform.right);
+        DetectDash(KeyCode.RightArrow, transform.right);
+
+        // Movimiento horizontal con flechas
+        float x = 0f;
+        float z = 0f;
+        if (Input.GetKey(KeyCode.LeftArrow)) x = -1f;
+        if (Input.GetKey(KeyCode.RightArrow)) x = 1f;
+        if (Input.GetKey(KeyCode.UpArrow)) z = 1f;
+        if (Input.GetKey(KeyCode.DownArrow)) z = -1f;
+
+        moveInput = (transform.right * x + transform.forward * z).normalized;
+
+        // Movimiento
+        if (isDashing)
+        {
+            controller.Move(dashDirection * dashSpeed * Time.deltaTime);
+            dashTimer -= Time.deltaTime;
+            if (dashTimer <= 0f)
+            {
+                isDashing = false;
+            }
+        }
+        else
+        {
+            float currentSpeed = Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : speed;
+            controller.Move(moveInput * currentSpeed * Time.deltaTime);
+        }
 
         // Salto y doble salto
         if (Input.GetKeyDown(KeyCode.Space))
@@ -55,12 +94,30 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        // Aplicar gravedad
+        // Gravedad
         velocity.y += gravity * Time.deltaTime;
         if (velocity.y < -50f)
             velocity.y = -50f;
 
-        // Movimiento vertical
         controller.Move(new Vector3(0, velocity.y, 0) * Time.deltaTime);
+    }
+
+    void DetectDash(KeyCode key, Vector3 direction)
+    {
+        if (Input.GetKeyDown(key))
+        {
+            if (lastKeyPress.ContainsKey(key) && Time.time - lastKeyPress[key] < doubleTap)
+            {
+                StartDash(direction);
+            }
+            lastKeyPress[key] = Time.time;
+        }
+    }
+
+    void StartDash(Vector3 direction)
+    {
+        isDashing = true;
+        dashTimer = dashDuration;
+        dashDirection = direction;
     }
 }
