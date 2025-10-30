@@ -2,39 +2,43 @@ using UnityEngine;
 
 public class DogTimer : MonoBehaviour
 {
-    public float countdownTime = 5f;
-    private float timer;
+    public float startTime = 10f;
+    private float currentTime;
     public bool isChasing = false;
+    public bool hasExpired = false;
 
-    public delegate void TimerExpired();
-    public event TimerExpired OnTimerExpired;
+    public delegate void TimerExpiredHandler();
+    public event TimerExpiredHandler OnTimerExpired;
 
     void Start()
     {
-        timer = countdownTime;
+        currentTime = startTime;
     }
 
     void Update()
     {
-        if (!isChasing)
+        if (!hasExpired)
         {
-            timer -= Time.deltaTime;
-            if (timer <= 0f)
+            currentTime -= Time.deltaTime;
+
+            if (currentTime <= 0f)
             {
-                isChasing = true;
+                hasExpired = true;
                 OnTimerExpired?.Invoke();
             }
         }
     }
 
-    public void ResetTimer()
+    public void RestartTimer()
     {
-        timer = countdownTime;
+        currentTime = startTime;
+        hasExpired = false;
         isChasing = false;
     }
 
     public float GetTimeRemaining()
     {
-        return Mathf.Max(0f, timer);
+        return Mathf.Max(currentTime, 0f);
     }
 }
+
