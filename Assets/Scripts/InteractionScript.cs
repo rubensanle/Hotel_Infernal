@@ -152,5 +152,9 @@ public class InteractionScript : MonoBehaviour
         timerStyle.normal.textColor = (timer > 0) ? Color.white : Color.red;
         GUI.Label(new Rect(10, 10, 250, 30), "Tiempo: " + Mathf.Ceil(timer).ToString() + "s", timerStyle);
     }
+
+    public float GetRemainingTime() => timer;
+    public bool IsTimerStopped() => isTimerStopped;
+
 }
 

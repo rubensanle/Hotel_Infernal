@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isDashing = false;
     private float dashTimer = 0f;
     private Vector3 dashDirection;
+    private KeyCode dashKey;
 
     private Vector3 moveInput;
     private Dictionary<KeyCode, float> lastKeyPress = new Dictionary<KeyCode, float>();
@@ -42,30 +43,37 @@ public class PlayerMovement : MonoBehaviour
             jumpCont = 0;
         }
 
-        // Detectar doble pulsación para dash con flechas
-        DetectDash(KeyCode.UpArrow, transform.forward);
-        DetectDash(KeyCode.DownArrow, -transform.forward);
-        DetectDash(KeyCode.LeftArrow, -transform.right);
-        DetectDash(KeyCode.RightArrow, transform.right);
+        // Detectar doble pulsación para dash con WASD
+        DetectDash(KeyCode.W, transform.forward);
+        DetectDash(KeyCode.S, -transform.forward);
+        DetectDash(KeyCode.A, -transform.right);
+        DetectDash(KeyCode.D, transform.right);
 
-        // Movimiento horizontal con flechas
+        // Movimiento horizontal con WASD
         float x = 0f;
         float z = 0f;
-        if (Input.GetKey(KeyCode.LeftArrow)) x = -1f;
-        if (Input.GetKey(KeyCode.RightArrow)) x = 1f;
-        if (Input.GetKey(KeyCode.UpArrow)) z = 1f;
-        if (Input.GetKey(KeyCode.DownArrow)) z = -1f;
+        if (Input.GetKey(KeyCode.A)) x = -1f;
+        if (Input.GetKey(KeyCode.D)) x = 1f;
+        if (Input.GetKey(KeyCode.W)) z = 1f;
+        if (Input.GetKey(KeyCode.S)) z = -1f;
 
         moveInput = (transform.right * x + transform.forward * z).normalized;
 
         // Movimiento
         if (isDashing)
         {
-            controller.Move(dashDirection * dashSpeed * Time.deltaTime);
-            dashTimer -= Time.deltaTime;
-            if (dashTimer <= 0f)
+            if (!Input.GetKey(dashKey))
             {
                 isDashing = false;
+            }
+            else
+            {
+                controller.Move(dashDirection * dashSpeed * Time.deltaTime);
+                dashTimer -= Time.deltaTime;
+                if (dashTimer <= 0f)
+                {
+                    isDashing = false;
+                }
             }
         }
         else
@@ -108,16 +116,17 @@ public class PlayerMovement : MonoBehaviour
         {
             if (lastKeyPress.ContainsKey(key) && Time.time - lastKeyPress[key] < doubleTap)
             {
-                StartDash(direction);
+                StartDash(direction, key);
             }
             lastKeyPress[key] = Time.time;
         }
     }
 
-    void StartDash(Vector3 direction)
+    void StartDash(Vector3 direction, KeyCode key)
     {
         isDashing = true;
         dashTimer = dashDuration;
         dashDirection = direction;
+        dashKey = key;
     }
 }
