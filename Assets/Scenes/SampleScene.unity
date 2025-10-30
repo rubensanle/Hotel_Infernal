@@ -1014,13 +1014,13 @@ PrefabInstance:
       addedObject: {fileID: 1525637409}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a4c9aeeb34279db47995cbcaba893eed, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1525637408}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a4c9aeeb34279db47995cbcaba893eed, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1525637407}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a4c9aeeb34279db47995cbcaba893eed, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1525637406}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a4c9aeeb34279db47995cbcaba893eed, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1525637413}
   m_SourcePrefab: {fileID: 100100000, guid: a4c9aeeb34279db47995cbcaba893eed, type: 3}
 --- !u!1 &1525637405 stripped
 GameObject:
@@ -1037,7 +1037,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.021549897
-  m_Speed: 3.5
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -1046,7 +1046,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 0.10132255
-  m_BaseOffset: 0.050661273
+  m_BaseOffset: 0.02
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &1525637407
@@ -1061,20 +1061,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7718d779c52109a4db64dc18c4e7f0c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DogTimer
-  countdownTime: 5
+  startTime: 10
   isChasing: 0
---- !u!114 &1525637408
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1525637405}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e2cb7e7134026c40be24406637cfbc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DogInteraction
+  hasExpired: 0
 --- !u!114 &1525637409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1089,6 +1078,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DogChase
   player: {fileID: 1977953339}
   gameOverUI: {fileID: 0}
+  interactionDistance: 2
+--- !u!65 &1525637413
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525637405}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.042132832, y: 0.0655489, z: 0.04309958}
+  m_Center: {x: 0.000011162046, y: 0.010340222, z: 0.00000010395403}
 --- !u!1 &1676370020
 GameObject:
   m_ObjectHideFlags: 0

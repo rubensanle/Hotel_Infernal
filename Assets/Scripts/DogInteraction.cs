@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 
 public class DogInteraction : MonoBehaviour
 {
@@ -30,4 +30,4 @@ public class DogInteraction : MonoBehaviour
         if (other.CompareTag("Player"))
             playerInRange = false;
     }
-}
+}*/
