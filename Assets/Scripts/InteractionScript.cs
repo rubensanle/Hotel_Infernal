@@ -120,7 +120,7 @@ public class InteractionScript : MonoBehaviour
                     if (allCubesDone)
                     {
                         isTimerStopped = true;
-                        Debug.Log("✅ Todos los cubos fueron interactuados 3 veces. Temporizador detenido.");
+                        Debug.Log("Todos los cubos fueron interactuados 3 veces. Temporizador detenido.");
                     }
                 }
                 else

@@ -5,7 +5,7 @@ public class DemonBehaviour : MonoBehaviour
 {
     public Transform jugador;
     public Transform[] puntosPatrulla;
-    public GameOverUI interfazGameOver;
+    public GameOverUITMP interfazGameOver;
     public InteractionDemon scriptInteraccion;
 
     private NavMeshAgent agente;
@@ -40,25 +40,57 @@ public class DemonBehaviour : MonoBehaviour
     public void Calmar()
     {
         enfadado = false;
-        agente.SetDestination(puntosPatrulla[indicePatrulla].position);
-        Debug.Log("El demonio se ha calmado y vuelve a patrullar.");
+        faseFinal = false;
+
+        Vector3 destinoAleatorio = GenerarDestinoAleatorio();
+        agente.SetDestination(destinoAleatorio);
+
+        Debug.Log("El demonio se ha calmado y vuelve a patrullar aleatoriamente.");
     }
+
 
     public void Teletransportarse()
     {
-        faseFinal = true;
-        transform.position = jugador.position + jugador.forward * 2f;
-        Debug.Log("El demonio se ha teletransportado frente al jugador.");
+        Vector3 posicionJugador = jugador.position;
+        Vector3 direccionFrontal = jugador.forward;
+
+        Vector3 nuevaPosicion = posicionJugador + direccionFrontal * 1.5f;
+
+        transform.position = nuevaPosicion;
+
+        transform.LookAt(posicionJugador);
     }
+
 
     void Patrullar()
     {
         if (!agente.pathPending && agente.remainingDistance < 0.5f)
         {
-            indicePatrulla = (indicePatrulla + 1) % puntosPatrulla.Length;
-            IrAlSiguientePunto();
+            Vector3 destinoAleatorio = GenerarDestinoAleatorio();
+            agente.SetDestination(destinoAleatorio);
         }
     }
+
+    Vector3 GenerarDestinoAleatorio()
+    {
+        float rango = 10f; 
+        Vector3 centro = transform.position;
+
+        Vector3 puntoAleatorio = centro + new Vector3(
+            Random.Range(-rango, rango),
+            0,
+            Random.Range(-rango, rango)
+        );
+
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(puntoAleatorio, out hit, 2f, NavMesh.AllAreas))
+        {
+            return hit.position;
+        }
+
+        return transform.position; 
+    }
+
 
     void IrAlSiguientePunto()
     {
@@ -80,5 +112,7 @@ public class DemonBehaviour : MonoBehaviour
             Debug.Log("El demonio ha matado al jugador.");
         }
     }
+
+
 }
 
