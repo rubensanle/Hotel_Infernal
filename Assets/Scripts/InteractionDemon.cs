@@ -25,7 +25,6 @@ public class InteractionDemon : MonoBehaviour
 
     void Update()
     {
-        // Detectar si el jugador está mirando al cubo y está cerca
         RaycastHit hit;
         jugadorCerca = false;
 
