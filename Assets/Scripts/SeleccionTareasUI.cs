@@ -87,7 +87,7 @@ public class SeleccionTareasUI : MonoBehaviour
     // Actualizar texto de puntos
     void ActualizarTexto()
     {
-        puntosTexto.text = "Puntos restantes: " + puntosRestantes;
+        puntosTexto.text = "" + puntosRestantes;
     }
 
     // Confirmar selección y cargar escena principal
