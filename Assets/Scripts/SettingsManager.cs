@@ -19,6 +19,9 @@ public class SettingsManager : MonoBehaviour
             // Cargar valores guardados previamente o usar valores por defecto
             sensibilidad = PlayerPrefs.GetFloat("Sensibilidad", 120f);
             volumen = PlayerPrefs.GetFloat("Volumen", 1f);
+
+            // 🔊 Aplica el volumen global al iniciar
+            AudioListener.volume = volumen;
         }
         else
         {
@@ -32,6 +35,7 @@ public class SettingsManager : MonoBehaviour
         sensibilidad = value;
         PlayerPrefs.SetFloat("Sensibilidad", value);
         PlayerPrefs.Save();
+        // ✅ No se toca nada más aquí
     }
 
     // Establece el volumen y lo guarda en PlayerPrefs
@@ -40,5 +44,9 @@ public class SettingsManager : MonoBehaviour
         volumen = value;
         PlayerPrefs.SetFloat("Volumen", value);
         PlayerPrefs.Save();
+
+        // 🔊 Aplica el volumen global a todo el juego
+        AudioListener.volume = volumen;
     }
 }
+

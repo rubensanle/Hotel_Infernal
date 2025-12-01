@@ -37,6 +37,9 @@ public class PauseManager : MonoBehaviour
         Time.timeScale = 1f;
         isPaused = false;
         Cursor.lockState = CursorLockMode.Locked;
+
+        // 🔊 Reanudar todos los sonidos
+        AudioListener.pause = false;
     }
 
     // Pausa el juego mostrando el menú y desbloqueando el cursor
@@ -46,12 +49,16 @@ public class PauseManager : MonoBehaviour
         Time.timeScale = 0f;
         isPaused = true;
         Cursor.lockState = CursorLockMode.None;
+
+        // 🔇 Pausar todos los sonidos (demonios + ambiente)
+        AudioListener.pause = true;
     }
 
     // Reinicia la escena actual
     public void RestartGame()
     {
         Time.timeScale = 1f;
+        AudioListener.pause = false; // aseguramos que el audio vuelve
 
         // NUEVO: Resetear todas las tareas antes de recargar
         GameTaskManager taskManager = FindFirstObjectByType<GameTaskManager>();
@@ -88,10 +95,10 @@ public class PauseManager : MonoBehaviour
     public void backToMainMenu()
     {
         Time.timeScale = 1f;
+        AudioListener.pause = false; // aseguramos que el audio vuelve
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        // NUEVO: Resetear todas las tareas antes de cambiar de escena
         GameTaskManager taskManager = FindFirstObjectByType<GameTaskManager>();
         if (taskManager != null)
         {
