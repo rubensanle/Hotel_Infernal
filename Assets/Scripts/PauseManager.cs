@@ -72,6 +72,10 @@ public class PauseManager : MonoBehaviour
             GameManager.instancia.ResetGame();
         }
 
+        AudioListener.pause = false;   // asegura que no queda muteado
+        AudioListener.volume = SettingsManager.Instance.volumen; // aplica volumen correcto
+
+
         SceneManager.LoadScene("PruebaDeMenuDeDia");
     }
 
