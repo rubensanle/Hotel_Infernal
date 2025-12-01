@@ -25,7 +25,7 @@ public class PatitoPickup : MonoBehaviour
 
     // Variables estáticas para contar todos los patitos
     public static int patitosEntregados = 0;
-    public static int totalPatitos = 0;
+    public static int totalPatitos = 3;
 
     void Start()
     {
@@ -35,7 +35,6 @@ public class PatitoPickup : MonoBehaviour
         escalaInicial = transform.localScale;
 
         // Contar este patito en el total
-        totalPatitos++;
         if (patitoUI != null)
             patitoUI.SetActive(false); // aseguramos que empieza oculto
     }
