@@ -25,6 +25,10 @@ public class TrashPickUp : MonoBehaviour
     public static int totalLatas = 0;
     public static int latasEntregadas = 0;
 
+    [Header("Sonido lata")]
+    public PlayerSounds playerSounds; // referencia al script de sonidos del jugador
+
+
     void Start()
     {
         // Guardar transform inicial
@@ -61,6 +65,10 @@ public class TrashPickUp : MonoBehaviour
     // Recoger una lata
     void RecogerLata()
     {
+        if (playerSounds != null)
+            playerSounds.PlayGruñido();
+
+
         recogido = true;
         latasRecogidas++;
         playerMovement.LlevarObjeto(true, true);

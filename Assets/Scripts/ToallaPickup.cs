@@ -25,6 +25,10 @@ public class ToallaPickup : MonoBehaviour
     // VARIABLE ESTÁTICA para rastrear si la toalla fue entregada
     public static bool toallaEntregadaStatic = false;
 
+    [Header("Sonido toalla")]
+    public PlayerSounds playerSounds; // referencia al script de sonidos del jugador
+
+
     void Start()
     {
         // Guardar transform inicial
@@ -46,11 +50,14 @@ public class ToallaPickup : MonoBehaviour
             // La toalla SÍ reduce velocidad → reduceVelocidad = true
             playerMovement.LlevarObjeto(true, true);
 
+            if (playerSounds != null)
+                playerSounds.PlayGruñido();
+
             // Colocar en mano del jugador
             transform.SetParent(toallaAnchor);
-            transform.localPosition = new Vector3(0, -0.25f, 0.5f); // un poquito más cerca
+            transform.localPosition = new Vector3(0, -0.25f, 0.5f);
             transform.localRotation = Quaternion.identity;
-            transform.localScale = Vector3.one * 0.28f;             // ajustamos tamaño para que no tape demasiado
+            transform.localScale = Vector3.one * 0.28f;
 
             GetComponent<Collider>().enabled = false;
 

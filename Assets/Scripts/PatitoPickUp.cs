@@ -27,6 +27,10 @@ public class PatitoPickup : MonoBehaviour
     public static int patitosEntregados = 0;
     public static int totalPatitos = 3;
 
+    [Header("Sonido del patito")]
+    public PlayerSounds playerSounds; // referencia al script de sonidos del jugador
+
+
     void Start()
     {
         // Guardar transform inicial
@@ -47,6 +51,10 @@ public class PatitoPickup : MonoBehaviour
         // Recoger patito si no está recogido y el jugador no lleva objeto
         if (!recogido && !playerMovement.EstaLlevandoObjeto && cerca && Input.GetKeyDown(KeyCode.E))
         {
+            // 🔊 reproducir gruñido aleatorio
+            if (playerSounds != null)
+                playerSounds.PlayGruñido();
+
             recogido = true;
             playerMovement.LlevarObjeto(true, false);
 

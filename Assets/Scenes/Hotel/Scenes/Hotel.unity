@@ -2254,6 +2254,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1883000507}
     - target: {fileID: 2196048032459208008, guid: 6b8055c3acc0e0f4ea20097f5cf3d899, type: 3}
+      propertyPath: playerSounds
+      value: 
+      objectReference: {fileID: 1103801436}
+    - target: {fileID: 2196048032459208008, guid: 6b8055c3acc0e0f4ea20097f5cf3d899, type: 3}
       propertyPath: camaraJugador
       value: 
       objectReference: {fileID: 1103801431}
@@ -6704,6 +6708,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1883000507}
     - target: {fileID: 2196048032459208008, guid: 6b8055c3acc0e0f4ea20097f5cf3d899, type: 3}
+      propertyPath: playerSounds
+      value: 
+      objectReference: {fileID: 1103801436}
+    - target: {fileID: 2196048032459208008, guid: 6b8055c3acc0e0f4ea20097f5cf3d899, type: 3}
       propertyPath: camaraJugador
       value: 
       objectReference: {fileID: 1103801431}
@@ -9420,7 +9428,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 791841470}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4183d43ddcb2bf04f994ef9ad2a0f2db, type: 3}
   m_Name: 
@@ -10672,6 +10680,10 @@ PrefabInstance:
       propertyPath: patitoAnchor
       value: 
       objectReference: {fileID: 1883000507}
+    - target: {fileID: 629391074773807093, guid: b423b707ab745314791f8c3395522004, type: 3}
+      propertyPath: playerSounds
+      value: 
+      objectReference: {fileID: 1103801436}
     - target: {fileID: 629391074773807093, guid: b423b707ab745314791f8c3395522004, type: 3}
       propertyPath: camaraJugador
       value: 
@@ -12723,6 +12735,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1883000507}
     - target: {fileID: 2196048032459208008, guid: 6b8055c3acc0e0f4ea20097f5cf3d899, type: 3}
+      propertyPath: playerSounds
+      value: 
+      objectReference: {fileID: 1103801436}
+    - target: {fileID: 2196048032459208008, guid: 6b8055c3acc0e0f4ea20097f5cf3d899, type: 3}
       propertyPath: camaraJugador
       value: 
       objectReference: {fileID: 1103801431}
@@ -13571,6 +13587,9 @@ PrefabInstance:
     - {fileID: 6866377232861509800, guid: 872e0ddb16dfc2847bd5834c411036ba, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 2198700458875717376, guid: 872e0ddb16dfc2847bd5834c411036ba, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1591794930}
     - targetCorrespondingSourceObject: {fileID: 5956846490429360915, guid: 872e0ddb16dfc2847bd5834c411036ba, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1883000507}
@@ -13578,6 +13597,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1569657059865451962, guid: 872e0ddb16dfc2847bd5834c411036ba, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1103801435}
+    - targetCorrespondingSourceObject: {fileID: 1569657059865451962, guid: 872e0ddb16dfc2847bd5834c411036ba, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1103801436}
   m_SourcePrefab: {fileID: 100100000, guid: 872e0ddb16dfc2847bd5834c411036ba, type: 3}
 --- !u!4 &1103801430 stripped
 Transform:
@@ -13650,6 +13672,23 @@ MonoBehaviour:
   telefono: {fileID: 1160683099}
   termometro: {fileID: 1759230537}
   ventilador: {fileID: 817580098}
+--- !u!114 &1103801436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977881425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8266d2e71b08c24fb3608e8d2558f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSounds
+  audioSource: {fileID: 1591794931}
+  "gru\xF1idos":
+  - {fileID: 8300000, guid: 38ef85f4c53ac4e44b9db1af8ac990e2, type: 3}
+  - {fileID: 8300000, guid: a756d44cb88a30a40b647fc4881c4bfd, type: 3}
+  - {fileID: 8300000, guid: 58fab159d37ec3b46b0804cb9eef2879, type: 3}
 --- !u!1 &1109576800
 GameObject:
   m_ObjectHideFlags: 0
@@ -14934,6 +14973,10 @@ PrefabInstance:
       propertyPath: patitoAnchor
       value: 
       objectReference: {fileID: 1883000507}
+    - target: {fileID: 629391074773807093, guid: b423b707ab745314791f8c3395522004, type: 3}
+      propertyPath: playerSounds
+      value: 
+      objectReference: {fileID: 1103801436}
     - target: {fileID: 629391074773807093, guid: b423b707ab745314791f8c3395522004, type: 3}
       propertyPath: camaraJugador
       value: 
@@ -20363,6 +20406,135 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: -0.003, z: 0.004}
   m_TimeToStationary: 0.5
+--- !u!1 &1591794929
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1591794930}
+  - component: {fileID: 1591794931}
+  m_Layer: 0
+  m_Name: ASPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1591794930
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591794929}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1103801430}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1591794931
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591794929}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 2.8431149
+  MaxDistance: 100000
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &1596215883
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21326,6 +21498,10 @@ PrefabInstance:
       propertyPath: patitoAnchor
       value: 
       objectReference: {fileID: 1883000507}
+    - target: {fileID: 629391074773807093, guid: b423b707ab745314791f8c3395522004, type: 3}
+      propertyPath: playerSounds
+      value: 
+      objectReference: {fileID: 1103801436}
     - target: {fileID: 629391074773807093, guid: b423b707ab745314791f8c3395522004, type: 3}
       propertyPath: camaraJugador
       value: 
@@ -23533,6 +23709,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1883000507}
     - target: {fileID: 2196048032459208008, guid: 6b8055c3acc0e0f4ea20097f5cf3d899, type: 3}
+      propertyPath: playerSounds
+      value: 
+      objectReference: {fileID: 1103801436}
+    - target: {fileID: 2196048032459208008, guid: 6b8055c3acc0e0f4ea20097f5cf3d899, type: 3}
       propertyPath: camaraJugador
       value: 
       objectReference: {fileID: 1103801431}
@@ -24175,7 +24355,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1840725668}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f2475809b527634cb47ad998b145d0c, type: 3}
   m_Name: 
@@ -24288,6 +24468,10 @@ PrefabInstance:
       propertyPath: trashAnchor
       value: 
       objectReference: {fileID: 1883000507}
+    - target: {fileID: 2196048032459208008, guid: 6b8055c3acc0e0f4ea20097f5cf3d899, type: 3}
+      propertyPath: playerSounds
+      value: 
+      objectReference: {fileID: 1103801436}
     - target: {fileID: 2196048032459208008, guid: 6b8055c3acc0e0f4ea20097f5cf3d899, type: 3}
       propertyPath: camaraJugador
       value: 
@@ -24572,7 +24756,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1531088820}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f2475809b527634cb47ad998b145d0c, type: 3}
   m_Name: 
@@ -27300,7 +27484,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2096744715}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f2475809b527634cb47ad998b145d0c, type: 3}
   m_Name: 
@@ -28238,6 +28422,10 @@ PrefabInstance:
       propertyPath: demonio2
       value: 
       objectReference: {fileID: 1548819754}
+    - target: {fileID: 8203782125894399602, guid: fef870e50b71af645b9df8382df38c3a, type: 3}
+      propertyPath: playerSounds
+      value: 
+      objectReference: {fileID: 1103801436}
     - target: {fileID: 8203782125894399602, guid: fef870e50b71af645b9df8382df38c3a, type: 3}
       propertyPath: toallaAnchor
       value: 
