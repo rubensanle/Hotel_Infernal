@@ -24355,15 +24355,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1840725668}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f2475809b527634cb47ad998b145d0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DemonioSonidos
   clips:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 58fab159d37ec3b46b0804cb9eef2879, type: 3}
+  - {fileID: 8300000, guid: 38ef85f4c53ac4e44b9db1af8ac990e2, type: 3}
+  - {fileID: 8300000, guid: a756d44cb88a30a40b647fc4881c4bfd, type: 3}
   audioSource: {fileID: 1924033315}
   intervaloMin: 10
   intervaloMax: 20
@@ -24756,15 +24756,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1531088820}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f2475809b527634cb47ad998b145d0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DemonioSonidos
   clips:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 58fab159d37ec3b46b0804cb9eef2879, type: 3}
+  - {fileID: 8300000, guid: 38ef85f4c53ac4e44b9db1af8ac990e2, type: 3}
+  - {fileID: 8300000, guid: a756d44cb88a30a40b647fc4881c4bfd, type: 3}
   audioSource: {fileID: 425428392}
   intervaloMin: 5
   intervaloMax: 12
@@ -27484,15 +27484,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2096744715}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f2475809b527634cb47ad998b145d0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DemonioSonidos
   clips:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 58fab159d37ec3b46b0804cb9eef2879, type: 3}
+  - {fileID: 8300000, guid: 38ef85f4c53ac4e44b9db1af8ac990e2, type: 3}
+  - {fileID: 8300000, guid: a756d44cb88a30a40b647fc4881c4bfd, type: 3}
   audioSource: {fileID: 994056739}
   intervaloMin: 8
   intervaloMax: 14
