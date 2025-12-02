@@ -281,6 +281,7 @@ MonoBehaviour:
   btnPerro: {fileID: 2135872593}
   btnPerroAlimentado: {fileID: 874978943}
   btnRelojes: {fileID: 838504347}
+  btnAltavoces: {fileID: 2110402249}
   puntosTexto: {fileID: 2143797492}
   btnContinuarNoche: {fileID: 689568874}
   puntosIniciales: 90
@@ -290,6 +291,7 @@ MonoBehaviour:
   costePerro: 75
   costePerroAlimentado: 35
   costeRelojes: 15
+  costeAltavoces: 15
 --- !u!4 &203908771
 Transform:
   m_ObjectHideFlags: 0
@@ -891,7 +893,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sorpresa (Volume Up)
+  m_text: 'Arreglar altavoces: 15'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
@@ -900,8 +902,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278512639
-  m_fontColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -918,8 +920,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12
-  m_fontSizeBase: 12
+  m_fontSize: 11
+  m_fontSizeBase: 11
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1573,7 +1575,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &858613914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2672,6 +2674,7 @@ MonoBehaviour:
   perroSacado: 0
   perroAlimentado: 0
   relojesArreglados: 0
+  altavocesArreglados: 0
 --- !u!4 &1578339441
 Transform:
   m_ObjectHideFlags: 0
@@ -3028,7 +3031,6 @@ GameObject:
   - component: {fileID: 2110402251}
   - component: {fileID: 2110402250}
   - component: {fileID: 2110402249}
-  - component: {fileID: 2110402252}
   m_Layer: 5
   m_Name: ArreglarAlt
   m_TagString: Untagged
@@ -3138,23 +3140,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2110402247}
   m_CullTransparentMesh: 1
---- !u!114 &2110402252
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2110402247}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dd024646a99974409fcc197e6b58d3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MrWorlwideScript
-  imagenMostrar: {fileID: 1011669190}
-  audioSource: {fileID: 0}
-  clipSonido: {fileID: 8300000, guid: a756d44cb88a30a40b647fc4881c4bfd, type: 3}
-  volumen: 1
-  duracion: 2
 --- !u!1 &2126962525
 GameObject:
   m_ObjectHideFlags: 0

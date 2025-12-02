@@ -11,6 +11,7 @@ public class SeleccionTareasUI : MonoBehaviour
     public Button btnPerro;             // Sacar al perro
     public Button btnPerroAlimentado;   // Alimentar al perro
     public Button btnRelojes;           // Arreglar relojes
+    public Button btnAltavoces;         // NUEVO: arreglar altavoces
 
     [Header("UI - Otros")]
     public TMP_Text puntosTexto;
@@ -24,11 +25,12 @@ public class SeleccionTareasUI : MonoBehaviour
     public int costePerro = 35;
     public int costePerroAlimentado = 35;
     public int costeRelojes = 15;
+    public int costeAltavoces = 15;     // NUEVO
 
     private int puntosRestantes;
 
     // Estados internos de cada tarea
-    private bool lucesOn, velocidadOn, conductosOn, perroOn, perroAlimentadoOn, relojesOn;
+    private bool lucesOn, velocidadOn, conductosOn, perroOn, perroAlimentadoOn, relojesOn, altavocesOn;
 
     void Start()
     {
@@ -45,6 +47,7 @@ public class SeleccionTareasUI : MonoBehaviour
         btnPerro.onClick.AddListener(() => ToggleTarea(ref perroOn, costePerro, (s) => GameManager.instancia.perroSacado = s, btnPerro));
         btnPerroAlimentado.onClick.AddListener(() => ToggleTarea(ref perroAlimentadoOn, costePerroAlimentado, (s) => GameManager.instancia.perroAlimentado = s, btnPerroAlimentado));
         btnRelojes.onClick.AddListener(() => ToggleTarea(ref relojesOn, costeRelojes, (s) => GameManager.instancia.relojesArreglados = s, btnRelojes));
+        btnAltavoces.onClick.AddListener(() => ToggleTarea(ref altavocesOn, costeAltavoces, (s) => GameManager.instancia.altavocesArreglados = s, btnAltavoces));
 
         // Suscribir botón de continuar
         btnContinuarNoche.onClick.AddListener(ConfirmarSeleccion);
@@ -98,6 +101,4 @@ public class SeleccionTareasUI : MonoBehaviour
 
         UnityEngine.SceneManagement.SceneManager.LoadScene("Hotel");
     }
-
 }
-

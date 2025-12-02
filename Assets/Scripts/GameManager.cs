@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public bool perroSacado = false;
     public bool perroAlimentado = false;
     public bool relojesArreglados = false;
+    public bool altavocesArreglados = false; 
 
     void Awake()
     {
@@ -32,9 +33,8 @@ public class GameManager : MonoBehaviour
         perroSacado = false;
         perroAlimentado = false;
         relojesArreglados = false;
+        altavocesArreglados = false; 
 
         // Reinicia aquí cualquier otra variable global que uses
     }
 }
-
-
