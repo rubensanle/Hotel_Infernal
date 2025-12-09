@@ -17,7 +17,7 @@ public class MrWorlwideScript : MonoBehaviour
 
     private Button boton;
 
-    void Start()
+    public void Start()
     {
         // Obtener el componente Button
         boton = GetComponent<Button>();

@@ -242,6 +242,9 @@ public class GameTaskManager : MonoBehaviour
     // Muestra el canvas de fin de noche con la puntuación
     void MostrarFinalNoche()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         Time.timeScale = 0f;
 
         if (juegoFinalizadoCanvas != null)

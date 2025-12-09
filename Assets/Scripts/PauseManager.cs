@@ -57,6 +57,9 @@ public class PauseManager : MonoBehaviour
     // Reinicia la escena actual
     public void RestartGame()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         Time.timeScale = 1f;
         AudioListener.pause = false; // aseguramos que el audio vuelve
 
