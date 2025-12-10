@@ -25,16 +25,26 @@ public class GameOverUITMP : MonoBehaviour
         // Permitir reiniciar la escena solo si Game Over ya está mostrado
         if (mostrarGameOver && Input.GetKeyDown(KeyCode.U))
         {
-            Time.timeScale = 1f; // Reactivar el tiempo antes de reiniciar
+            Time.timeScale = 1f;
+            AudioListener.pause = false; // aseguramos que el audio vuelve
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
+            GameTaskManager taskManager = FindFirstObjectByType<GameTaskManager>();
+            if (taskManager != null)
+            {
+                taskManager.ResetAllTasks();
+            }
+
+            // Reiniciar estados del GameManager para empezar desde cero
             if (GameManager.instancia != null)
             {
                 GameManager.instancia.ResetGame();
             }
 
             SceneManager.LoadScene("PruebaDeMenuDeDia");
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
         }
+    
     }
 
     // Activa la interfaz de Game Over
