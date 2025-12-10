@@ -16,6 +16,7 @@ public class SeleccionTareasUI : MonoBehaviour
     [Header("UI - Otros")]
     public TMP_Text puntosTexto;
     public Button btnContinuarNoche;    // Botón para confirmar y pasar a la noche
+    public TMP_Dropdown dificultadDropdown; // 🔄 NUEVO: Dropdown de dificultad
 
     [Header("Config")]
     public int puntosIniciales = 100;
@@ -37,7 +38,13 @@ public class SeleccionTareasUI : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        puntosRestantes = puntosIniciales;
+        // 🔄 Suscribir evento del dropdown
+        if (dificultadDropdown != null)
+            dificultadDropdown.onValueChanged.AddListener(OnDifficultyChanged);
+
+        // Aplicar dificultad inicial
+        OnDifficultyChanged(dificultadDropdown != null ? dificultadDropdown.value : 2); // por defecto Difícil
+
         ActualizarTexto();
 
         // Suscribir botones de tareas
@@ -81,19 +88,58 @@ public class SeleccionTareasUI : MonoBehaviour
         ActualizarTexto();
     }
 
-    // Cambiar solo el color del botón, manteniendo el texto original
     void CambiarVisualBoton(Button boton, Color colorFondo)
     {
         boton.GetComponent<Image>().color = colorFondo;
     }
 
-    // Actualizar texto de puntos
     void ActualizarTexto()
     {
         puntosTexto.text = "" + puntosRestantes;
     }
 
-    // Confirmar selección y cargar escena principal
+    // 🔄 NUEVO: Cambiar puntos según dificultad
+    void OnDifficultyChanged(int index)
+    {
+        // Ajustar puntos iniciales según dificultad
+        switch (index)
+        {
+            case 0: // Fácil
+                puntosIniciales = 180;
+                break;
+            case 1: // Medio
+                puntosIniciales = 125;
+                break;
+            case 2: // Difícil
+                puntosIniciales = 90;
+                break;
+        }
+
+        puntosRestantes = puntosIniciales;
+
+        lucesOn = velocidadOn = conductosOn = perroOn = perroAlimentadoOn = relojesOn = altavocesOn = false;
+
+        GameManager.instancia.lucesEncendidas = false;
+        GameManager.instancia.velocidadNormalSeleccionada = false;
+        GameManager.instancia.conductosLimpios = false;
+        GameManager.instancia.perroSacado = false;
+        GameManager.instancia.perroAlimentado = false;
+        GameManager.instancia.relojesArreglados = false;
+        GameManager.instancia.altavocesArreglados = false;
+
+        CambiarVisualBoton(btnLuces, Color.red);
+        CambiarVisualBoton(btnVelocidad, Color.red);
+        CambiarVisualBoton(btnConductos, Color.red);
+        CambiarVisualBoton(btnPerro, Color.red);
+        CambiarVisualBoton(btnPerroAlimentado, Color.red);
+        CambiarVisualBoton(btnRelojes, Color.red);
+        CambiarVisualBoton(btnAltavoces, Color.red);
+
+        // Actualizar texto de puntos
+        ActualizarTexto();
+    }
+
+
     public void ConfirmarSeleccion()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("Hotel");
@@ -101,3 +147,4 @@ public class SeleccionTareasUI : MonoBehaviour
         Cursor.visible = false;
     }
 }
+
