@@ -96,9 +96,8 @@ public class SeleccionTareasUI : MonoBehaviour
     // Confirmar selección y cargar escena principal
     public void ConfirmarSeleccion()
     {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Hotel");
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Hotel");
     }
 }
