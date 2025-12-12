@@ -24467,7 +24467,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8283034260407169360, guid: 471ec89e5298b3c4f8725380cd6f559b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8771023516528405482, guid: 471ec89e5298b3c4f8725380cd6f559b, type: 3}
       propertyPath: m_LocalScale.x
@@ -24555,12 +24555,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DemonioSonidos
   clips:
-  - {fileID: 8300000, guid: 58fab159d37ec3b46b0804cb9eef2879, type: 3}
-  - {fileID: 8300000, guid: 38ef85f4c53ac4e44b9db1af8ac990e2, type: 3}
-  - {fileID: 8300000, guid: a756d44cb88a30a40b647fc4881c4bfd, type: 3}
+  - {fileID: 8300000, guid: f6a325f20d0f4794b9baf679caa75d76, type: 3}
+  - {fileID: 8300000, guid: 14f2d41b344b6ac409dde87bca8955af, type: 3}
+  - {fileID: 8300000, guid: a0fa99826160c804e8ce671d3d21be19, type: 3}
   audioSource: {fileID: 1924033315}
   intervaloMin: 10
-  intervaloMax: 20
+  intervaloMax: 35
 --- !u!1001 &1875876843
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25449,7 +25449,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 30
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
