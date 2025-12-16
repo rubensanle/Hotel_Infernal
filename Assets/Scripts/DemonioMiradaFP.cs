@@ -25,6 +25,19 @@ public class DemonioMiradaFP : MonoBehaviour
 
     void Start()
     {
+        // Verificar si debemos desactivar este demonio en dificultad Fácil
+        if (GameManager.instancia != null && GameManager.instancia.dificultadSeleccionada == 0)
+        {
+            // Desactivar completamente el GameObject del demonio
+            gameObject.SetActive(false);
+            return; // Salir del Start para no inicializar nada más
+        }
+
+        if (GameManager.instancia != null && GameManager.instancia.dificultadSeleccionada == 1)
+        {
+            velocidadPersecucion = 1f;
+        }
+
         // Obtener NavMeshAgent y configurar movimiento inicial
         agente = GetComponent<NavMeshAgent>();
         agente.speed = velocidadPersecucion;
@@ -37,25 +50,25 @@ public class DemonioMiradaFP : MonoBehaviour
 
     void Update()
     {
-        // Si falta referencia, el script no hace nada
+        // Si el demonio está desactivado por dificultad Fácil, no hacer nada
+        if (GameManager.instancia != null && GameManager.instancia.dificultadSeleccionada == 0)
+            return;
+
+        // Resto del código permanece igual...
         if (jugador == null || camaraJugador == null) return;
 
-        // Comprobar si el jugador está mirando al demonio
         bool meMira = JugadorMeMiraConLineaDeVista();
 
-        // Si el jugador lo mira, el demonio se queda quieto
         if (meMira)
         {
             agente.isStopped = true;
         }
         else
         {
-            // Si no lo mira, persigue al jugador
             agente.isStopped = false;
             agente.SetDestination(jugador.position);
         }
 
-        // Matar por distancia si no se usa trigger
         if (!meMira && Vector3.Distance(transform.position, jugador.position) <= distanciaMatar)
         {
             ActivarGameOver();

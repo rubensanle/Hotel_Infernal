@@ -48,6 +48,26 @@ public class GameTaskManager : MonoBehaviour
 
     void Start()
     {
+        // Determinar tiempos según dificultad
+        if (GameManager.instancia != null)
+        {
+            switch (GameManager.instancia.dificultadSeleccionada)
+            {
+                case 0: // Fácil
+                    tiempoGeneral = 630f;    // 10 minutos y 30 segundos
+                    tiempoDemonio = 330f;    // 5 minutos y 30 segundos
+                    break;
+                case 1: // Medio
+                    tiempoGeneral = 570f;    // 9 minutos y 30 segundos
+                    tiempoDemonio = 210f;    // 3.5 minutos (valor original)
+                    break;
+                case 2: // Difícil
+                    tiempoGeneral = 480f;    // 8 minutos (valor original)
+                    tiempoDemonio = 210f;    // 3.5 minutos (valor original)
+                    break;
+            }
+        }
+
         tiempoRestanteDemonio = tiempoDemonio;
         tiempoRestanteGeneral = tiempoGeneral;
 
@@ -390,7 +410,7 @@ public class GameTaskManager : MonoBehaviour
                         fontStyle = FontStyle.Bold
                     };
 
-                    string textoDemonio = tiempoMostrar <= 0f ? "PELIGRO: Demonio desatado!" : $"Demonio: {tiempoMostrar:F0}s / 210s";
+                    string textoDemonio = tiempoMostrar <= 0f ? "PELIGRO: Demonio desatado!" : $"Demonio: {tiempoMostrar:F0}s";
                     GUI.Label(new Rect(x, y + 90, anchoBarra, 35), textoDemonio, estiloDemonio);
                 }
 

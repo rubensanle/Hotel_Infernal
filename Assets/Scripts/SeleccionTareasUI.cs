@@ -98,7 +98,8 @@ public class SeleccionTareasUI : MonoBehaviour
         puntosTexto.text = "" + puntosRestantes;
     }
 
-    // 🔄 NUEVO: Cambiar puntos según dificultad
+    // En la clase SeleccionTareasUI, modificar el método OnDifficultyChanged:
+
     void OnDifficultyChanged(int index)
     {
         // Ajustar puntos iniciales según dificultad
@@ -106,17 +107,25 @@ public class SeleccionTareasUI : MonoBehaviour
         {
             case 0: // Fácil
                 puntosIniciales = 180;
+                // Guardar dificultad en GameManager
+                if (GameManager.instancia != null)
+                    GameManager.instancia.dificultadSeleccionada = 0;
                 break;
             case 1: // Medio
                 puntosIniciales = 125;
+                if (GameManager.instancia != null)
+                    GameManager.instancia.dificultadSeleccionada = 1;
                 break;
             case 2: // Difícil
                 puntosIniciales = 90;
+                if (GameManager.instancia != null)
+                    GameManager.instancia.dificultadSeleccionada = 2;
                 break;
         }
 
         puntosRestantes = puntosIniciales;
 
+        // Resto del código permanece igual...
         lucesOn = velocidadOn = conductosOn = perroOn = perroAlimentadoOn = relojesOn = altavocesOn = false;
 
         GameManager.instancia.lucesEncendidas = false;

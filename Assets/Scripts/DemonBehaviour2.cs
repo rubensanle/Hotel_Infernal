@@ -26,10 +26,33 @@ public class DemonBehaviour2 : MonoBehaviour
     // Parametros de captura
     public float distanciaMatar = 0.6f; // distancia exacta para matar
 
+    // Velocidad base (para cálculo según dificultad)
+    public float velocidadBaseMatar = 70f; // Valor base original (100%)
+
     void Start()
     {
         agente = GetComponent<NavMeshAgent>();
-        anim = GetComponent<Animator>(); 
+        anim = GetComponent<Animator>();
+
+        // Calcular velocidad final según dificultad
+        float velocidadFinal = velocidadBaseMatar;
+
+        if (GameManager.instancia != null)
+        {
+            switch (GameManager.instancia.dificultadSeleccionada)
+            {
+                case 0: // Fácil - 70% de la velocidad
+                    velocidadFinal = velocidadBaseMatar * 0.7f;
+                    break;
+                case 1: // Medio - 85% de la velocidad
+                    velocidadFinal = velocidadBaseMatar * 0.85f;
+                    break;
+                case 2: // Difícil - 100% de la velocidad
+                    velocidadFinal = velocidadBaseMatar; // Valor original
+                    break;
+            }
+        }
+
         if (agente != null)
         {
             // Configuracion para parada precisa en el objetivo
@@ -41,6 +64,9 @@ public class DemonBehaviour2 : MonoBehaviour
             agente.acceleration = 300f;        // respuesta inmediata
             agente.angularSpeed = 720f;        // giros rapidos
             agente.obstacleAvoidanceType = ObstacleAvoidanceType.LowQualityObstacleAvoidance;
+
+            // Establecer la velocidad ajustada
+            agente.speed = velocidadFinal;
         }
 
         puntoOrigen = transform.position;
@@ -63,7 +89,7 @@ public class DemonBehaviour2 : MonoBehaviour
         if (enfadado)
         {
             agente.isStopped = false;
-            agente.speed = 70f;                    // velocidad alta solicitada
+            // Velocidad ya está configurada en Start según dificultad
             agente.SetDestination(jugador.position); // actualiza destino cada frame
 
             // Si esta dentro de la distancia de matar, activa GameOver
@@ -84,17 +110,17 @@ public class DemonBehaviour2 : MonoBehaviour
     }
 
     // Animacion
-    void ActualizarAnimacion() {
-    if (anim == null || agente == null) return;
+    void ActualizarAnimacion()
+    {
+        if (anim == null || agente == null) return;
 
-    // Está caminando si el agente no está parado y se está moviendo algo
-    bool estaCaminando =
-        !agente.isStopped &&
-        agente.velocity.sqrMagnitude > 0.01f;  // velocidad > 0
+        // Está caminando si el agente no está parado y se está moviendo algo
+        bool estaCaminando =
+            !agente.isStopped &&
+            agente.velocity.sqrMagnitude > 0.01f;  // velocidad > 0
 
-    anim.SetBool("isWalking", estaCaminando);
-}
-
+        anim.SetBool("isWalking", estaCaminando);
+    }
 
     // Activa persecucion rapida durante un tiempo limitado
     public void ActivarPersecucionRapida()
@@ -103,7 +129,9 @@ public class DemonBehaviour2 : MonoBehaviour
         {
             enfadado = true;
             agente.isStopped = false;
-            agente.speed = 200f;
+            // La velocidad ya está configurada según dificultad en Start
+
+            Debug.Log($"Demonio2 activado - Velocidad: {agente.speed} (Dificultad: {GameManager.instancia?.dificultadSeleccionada})");
 
             // Opcional: calma despues de 10 segundos
             StartCoroutine(CalmarDespuesDeTiempo(15f));
@@ -154,4 +182,3 @@ public class DemonBehaviour2 : MonoBehaviour
         }
     }
 }
-

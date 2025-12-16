@@ -7,8 +7,8 @@ public class DemonBehaviour : MonoBehaviour
     public GameOverUITMP interfazGameOver;        // Referencia a la interfaz de Game Over
     public Transform[] puntosPatrulla;            // Lista de puntos por donde patrulla
 
-    public float velocidadNormal = 5.5f;          // Velocidad cuando patrulla o persigue suave
-    public float velocidadMatar = 10f;            // Velocidad cuando esta en modo matar
+    public float velocidadNormal = 27f;          // Velocidad cuando patrulla o persigue suave
+    public float velocidadMatar = 35f;            // Velocidad cuando esta en modo matar
     public float distanciaMinima = 6f;            // Distancia a la que se detiene cuando no mata
 
     private NavMeshAgent agente;                  // Componente de navegacion
@@ -22,6 +22,24 @@ public class DemonBehaviour : MonoBehaviour
     void Start()
     {
         agente = GetComponent<NavMeshAgent>();
+
+        // Ajustar velocidad de matar según dificultad
+        if (GameManager.instancia != null)
+        {
+            switch (GameManager.instancia.dificultadSeleccionada)
+            {
+                case 0: // Fácil
+                    velocidadMatar = 27f;  // Más lento en Fácil
+                    break;
+                case 1: // Medio
+                    velocidadMatar = 30f;  // Intermedio en Medio
+                    break;
+                case 2: // Difícil
+                    velocidadMatar = 35f;  // Valor original en Difícil
+                    break;
+            }
+        }
+
         agente.speed = velocidadNormal;
         agente.stoppingDistance = distanciaMinima;
         agente.acceleration = 8f;
@@ -150,7 +168,7 @@ public class DemonBehaviour : MonoBehaviour
     {
         enfadado = false;
         faseFinal = true;
-        agente.speed = velocidadMatar;
+        agente.speed = velocidadMatar;  // Usar la velocidad ajustada por dificultad
         agente.stoppingDistance = 0f;
         agente.autoBraking = false;
         agente.acceleration = 12f;
@@ -161,7 +179,7 @@ public class DemonBehaviour : MonoBehaviour
             agente.SetDestination(jugador.position);
         }
 
-        Debug.Log("Demonio en modo matar: persecucion rapida directa.");
+        Debug.Log($"Demonio en modo matar: velocidad = {velocidadMatar} (Dificultad: {GameManager.instancia?.dificultadSeleccionada})");
     }
 
     public void Calmar()

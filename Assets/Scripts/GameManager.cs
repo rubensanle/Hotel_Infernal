@@ -10,7 +10,9 @@ public class GameManager : MonoBehaviour
     public bool perroSacado = false;
     public bool perroAlimentado = false;
     public bool relojesArreglados = false;
-    public bool altavocesArreglados = false; 
+    public bool altavocesArreglados = false;
+    public int dificultadSeleccionada = 2; 
+
 
     void Awake()
     {
