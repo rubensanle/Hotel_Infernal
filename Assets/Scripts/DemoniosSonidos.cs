@@ -10,6 +10,7 @@ public class DemonioSonidos : MonoBehaviour
     [Header("Configuración")]
     public float intervaloMin = 5f;    // Tiempo mínimo entre sonidos
     public float intervaloMax = 12f;   // Tiempo máximo entre sonidos
+    public float maxDuracionClip = 5f; // ? Máximo tiempo de reproducción por clip
 
     void Start()
     {
@@ -32,10 +33,18 @@ public class DemonioSonidos : MonoBehaviour
             int indice = Random.Range(0, clips.Length);
             AudioClip clip = clips[indice];
 
-            // Reproducir
-            audioSource.PlayOneShot(clip);
+            // Reproducir clip y cortar a los 5 segundos
+            audioSource.clip = clip;
+            audioSource.Play();
             Debug.Log($"?? Demonio reproduce sonido: {clip.name}");
+
+            // Esperar máximo 5 segundos o menos si el clip dura menos
+            yield return new WaitForSeconds(Mathf.Min(maxDuracionClip, clip.length));
+
+            // Parar el sonido
+            audioSource.Stop();
         }
     }
 }
+
 

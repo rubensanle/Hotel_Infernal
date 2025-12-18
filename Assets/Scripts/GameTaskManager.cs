@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 
 // Gestiona el tiempo general, las tareas y el comportamiento del demonio
 public class GameTaskManager : MonoBehaviour
@@ -56,14 +57,26 @@ public class GameTaskManager : MonoBehaviour
                 case 0: // Fácil
                     tiempoGeneral = 630f;    // 10 minutos y 30 segundos
                     tiempoDemonio = 330f;    // 5 minutos y 30 segundos
+                    if (GameManager.instancia != null && GameManager.instancia.altavocesArreglados)
+                    {
+                        tiempoDemonio = tiempoDemonio + 30f;
+                    }
                     break;
                 case 1: // Medio
                     tiempoGeneral = 570f;    // 9 minutos y 30 segundos
                     tiempoDemonio = 210f;    // 3.5 minutos (valor original)
+                    if (GameManager.instancia != null && GameManager.instancia.altavocesArreglados)
+                    {
+                        tiempoDemonio = tiempoDemonio + 30f;
+                    }
                     break;
                 case 2: // Difícil
                     tiempoGeneral = 480f;    // 8 minutos (valor original)
                     tiempoDemonio = 210f;    // 3.5 minutos (valor original)
+                    if (GameManager.instancia != null && GameManager.instancia.altavocesArreglados)
+                    {
+                        tiempoDemonio = tiempoDemonio + 30f;
+                    }
                     break;
             }
         }

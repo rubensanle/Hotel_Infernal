@@ -5158,10 +5158,10 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 69
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 30
+  MaxDistance: 22
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -5196,7 +5196,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -5245,7 +5245,7 @@ Transform:
   m_GameObject: {fileID: 425428391}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.711, z: 0}
+  m_LocalPosition: {x: 0, y: 1.021, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9594,7 +9594,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &791841472
 Transform:
   m_ObjectHideFlags: 0
@@ -9624,8 +9624,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HotelMusicManager
   audioSource: {fileID: 1968054310}
-  musicaNormal: {fileID: 8300000, guid: a756d44cb88a30a40b647fc4881c4bfd, type: 3}
-  musicaAltavoces: {fileID: 8300000, guid: 38ef85f4c53ac4e44b9db1af8ac990e2, type: 3}
+  musicaNormal: {fileID: 8300000, guid: 8016ed7b2d6dcb6499d700781138eae8, type: 3}
+  musicaAltavoces: {fileID: 8300000, guid: fda8d4bd40140f241836eef69f040a04, type: 3}
 --- !u!1 &803015021
 GameObject:
   m_ObjectHideFlags: 0
@@ -12386,7 +12386,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 78
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 30
@@ -12424,7 +12424,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -24559,8 +24559,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 14f2d41b344b6ac409dde87bca8955af, type: 3}
   - {fileID: 8300000, guid: a0fa99826160c804e8ce671d3d21be19, type: 3}
   audioSource: {fileID: 1924033315}
-  intervaloMin: 10
-  intervaloMax: 35
+  intervaloMin: 15
+  intervaloMax: 20
+  maxDuracionClip: 5
 --- !u!1001 &1875876843
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24956,12 +24957,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DemonioSonidos
   clips:
-  - {fileID: 8300000, guid: 58fab159d37ec3b46b0804cb9eef2879, type: 3}
+  - {fileID: 8300000, guid: 3584b8c29a3f1bf498cf5492f03ba605, type: 3}
   - {fileID: 8300000, guid: 38ef85f4c53ac4e44b9db1af8ac990e2, type: 3}
-  - {fileID: 8300000, guid: a756d44cb88a30a40b647fc4881c4bfd, type: 3}
+  - {fileID: 8300000, guid: b3149fcad4653034c862eaae0f57e718, type: 3}
+  - {fileID: 8300000, guid: 57171e0eefd99724295675ce5bdf0860, type: 3}
   audioSource: {fileID: 425428392}
-  intervaloMin: 5
-  intervaloMax: 12
+  intervaloMin: 15
+  intervaloMax: 20
+  maxDuracionClip: 5
 --- !u!1 &1890030545
 GameObject:
   m_ObjectHideFlags: 0
@@ -25446,10 +25449,10 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 96
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 30
+  MaxDistance: 22
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -25484,7 +25487,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -25533,7 +25536,7 @@ Transform:
   m_GameObject: {fileID: 1924033314}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.957, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -26479,13 +26482,13 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.23
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 175
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 1000
@@ -26572,7 +26575,7 @@ Transform:
   m_GameObject: {fileID: 1968054309}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -27817,12 +27820,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DemonioSonidos
   clips:
-  - {fileID: 8300000, guid: 58fab159d37ec3b46b0804cb9eef2879, type: 3}
-  - {fileID: 8300000, guid: 38ef85f4c53ac4e44b9db1af8ac990e2, type: 3}
-  - {fileID: 8300000, guid: a756d44cb88a30a40b647fc4881c4bfd, type: 3}
+  - {fileID: 8300000, guid: 1ca049c678dd1124caefb01dcd2378b8, type: 3}
+  - {fileID: 8300000, guid: 1a135d19a743c2246989f7935e6fac83, type: 3}
+  - {fileID: 8300000, guid: ca147e9ac1112b24ea58cd49738ffd2c, type: 3}
   audioSource: {fileID: 994056739}
-  intervaloMin: 8
-  intervaloMax: 14
+  intervaloMin: 15
+  intervaloMax: 20
+  maxDuracionClip: 5
 --- !u!1001 &2106908614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28441,6 +28445,7 @@ MonoBehaviour:
   perroAlimentado: 0
   relojesArreglados: 0
   altavocesArreglados: 0
+  dificultadSeleccionada: 2
 --- !u!4 &2139999294
 Transform:
   m_ObjectHideFlags: 0
