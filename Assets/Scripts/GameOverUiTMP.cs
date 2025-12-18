@@ -48,13 +48,13 @@ public class GameOverUITMP : MonoBehaviour
     }
 
     // Activa la interfaz de Game Over
-    public void ShowGameOverMessage()
-    {
-        gameOverText.enabled = true;   // Muestra el texto principal
-        fondoNegro.enabled = true;     // Muestra el fondo negro
-        reiniciarTexto.enabled = true; // Muestra el mensaje de reinicio
-        mostrarGameOver = true;        // Cambia el estado
+    public void ShowGameOverMessage(){
+    gameOverText.enabled = true;   // Muestra el texto principal
+    fondoNegro.enabled = true;     // Muestra el fondo negro
+    reiniciarTexto.enabled = true; // Muestra el mensaje de reinicio
+    mostrarGameOver = true;        // Cambia el estado
 
-        Time.timeScale = 0f;           // Pausa el juego completo
+    Time.timeScale = 0f;           // Pausa el juego completo
+    AudioListener.pause = true;
     }
 }
