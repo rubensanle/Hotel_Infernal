@@ -884,12 +884,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ControlLucesEscenario
   luces:
-  - {fileID: 955643703}
-  - {fileID: 174900570}
   - {fileID: 324979278}
-  - {fileID: 1325096635}
-  - {fileID: 1735043129}
-  - {fileID: 1415163476}
   - {fileID: 1284648268}
   - {fileID: 1233578842}
   - {fileID: 745500686}
@@ -2271,6 +2266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomMusicBlocker
   musicaGlobal: {fileID: 1968054310}
+  ambienteTenebrosoClip: {fileID: 8300000, guid: 883df73d626732241b51a9cbdddc4356, type: 3}
   playerTag: Player
 --- !u!54 &170005323
 Rigidbody:
@@ -14757,6 +14753,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06b80f176f96f6f46bd39dfaa6ed06ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TelefonoInteract
+--- !u!1 &1166648886
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1166648888}
+  - component: {fileID: 1166648887}
+  m_Layer: 0
+  m_Name: LamparasControllerHabs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1166648887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1166648886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52a3d2752ae097242b9d5fc1c07965e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ControlLucesEscenario
+  luces:
+  - {fileID: 955643703}
+  - {fileID: 174900570}
+  - {fileID: 1325096635}
+  - {fileID: 1735043129}
+  - {fileID: 1415163476}
+  intensidadAlta: 125
+  intensidadBaja: 85
+--- !u!4 &1166648888
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1166648886}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 399.8672, y: 0, z: 164.21442}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1175620526
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22535,6 +22583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomMusicBlocker
   musicaGlobal: {fileID: 1968054310}
+  ambienteTenebrosoClip: {fileID: 8300000, guid: 883df73d626732241b51a9cbdddc4356, type: 3}
   playerTag: Player
 --- !u!65 &1689245086
 BoxCollider:
@@ -25793,6 +25842,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomMusicBlocker
   musicaGlobal: {fileID: 1968054310}
+  ambienteTenebrosoClip: {fileID: 8300000, guid: 883df73d626732241b51a9cbdddc4356, type: 3}
   playerTag: Player
 --- !u!65 &1933315942
 BoxCollider:
@@ -29310,6 +29360,7 @@ SceneRoots:
   - {fileID: 4145771740614575756}
   - {fileID: 2139999294}
   - {fileID: 56412545}
+  - {fileID: 1166648888}
   - {fileID: 1041526042}
   - {fileID: 74640041}
   - {fileID: 1216860547}
