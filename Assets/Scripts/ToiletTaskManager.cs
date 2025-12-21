@@ -122,6 +122,9 @@ public class ToiletTaskManager : MonoBehaviour
     // Mostrar mensaje de interacción en pantalla
     void OnGUI()
     {
+        if (Time.timeScale == 0f)
+            return;
+
         if (cerca && vaterActual != null && !vaterActual.EstaLimpio)
         {
             GUIStyle estilo = new GUIStyle(GUI.skin.label);

@@ -98,6 +98,9 @@ public class FrameTaskManager : MonoBehaviour
     // Mostrar mensaje de interacción en pantalla
     void OnGUI()
     {
+        if (Time.timeScale == 0f)
+            return;
+
         if (cerca && cuadroActual != null && !cuadroActual.EstaRecto)
         {
             GUIStyle estilo = new GUIStyle(GUI.skin.label);

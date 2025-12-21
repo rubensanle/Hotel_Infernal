@@ -123,6 +123,9 @@ public class BedTaskManager : MonoBehaviour
     // Mostrar mensaje de interacción en pantalla
     void OnGUI()
     {
+        if (Time.timeScale == 0f)
+            return;
+
         if (cerca && objetoActual != null && !objetoActual.EstaCompletado)
         {
             GUIStyle estilo = new GUIStyle(GUI.skin.label);

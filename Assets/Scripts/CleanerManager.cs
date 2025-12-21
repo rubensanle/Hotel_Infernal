@@ -135,6 +135,9 @@ public class CleanerManager : MonoBehaviour
     // GUI para mostrar mensaje en pantalla
     void OnGUI()
     {
+        if (Time.timeScale == 0f)
+            return;
+
         if (cerca && !limpiezaCompletada && cuboActual != null)
         {
             GUIStyle estilo = new GUIStyle(GUI.skin.label);

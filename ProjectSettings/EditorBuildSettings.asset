@@ -15,11 +15,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Hotel.unity
     guid: 0c4e66b34bf306341990a218c6294538
   - enabled: 1
-    path: Assets/Scenes/Hotel/Scenes/Hotel.unity
-    guid: 8827cdf6e3310b34aa1b2536155a55fc
-  - enabled: 1
     path: Assets/Scenes/PruebaDeMenuDeDia.unity
     guid: ed568944dc381aa4391c6cfdd9f63c88
+  - enabled: 1
+    path: Assets/Scenes/Hotel/Scenes/Hotel.unity
+    guid: 8827cdf6e3310b34aa1b2536155a55fc
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

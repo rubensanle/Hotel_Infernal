@@ -171,6 +171,9 @@ public class TrashPickUp : MonoBehaviour
     // Mostrar mensajes de interacción en pantalla
     void OnGUI()
     {
+        if (Time.timeScale == 0f)
+            return;
+
         GUIStyle estilo = new GUIStyle(GUI.skin.label);
         estilo.fontSize = 40;
         estilo.normal.textColor = Color.white;

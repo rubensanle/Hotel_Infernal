@@ -99,6 +99,9 @@ public class LampTaskManager : MonoBehaviour
     // Mostrar mensaje de interacción en pantalla
     void OnGUI()
     {
+        if (Time.timeScale == 0f)
+            return;
+
         if (cerca && lamparaActual != null && !lamparaActual.EstaEncendida)
         {
             GUIStyle estilo = new GUIStyle(GUI.skin.label);

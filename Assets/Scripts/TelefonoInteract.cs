@@ -81,8 +81,6 @@ public class TelefonoInteract : MonoBehaviour
     {
         canvasTelefono.SetActive(false);
         abierto = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
     }
 
     // Método para verificar si la tarea está completada
@@ -114,6 +112,9 @@ public class TelefonoInteract : MonoBehaviour
     // Mostrar mensaje de interacción en pantalla
     void OnGUI()
     {
+        if (Time.timeScale == 0f)
+            return;
+
         // Solo mostrar mensaje si no está completada y no está abierto
         if (cerca && !abierto && !tareaCompletada)
         {

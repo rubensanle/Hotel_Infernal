@@ -64,7 +64,7 @@ public class GameTaskManager : MonoBehaviour
                     break;
                 case 1: // Medio
                     tiempoGeneral = 570f;    // 9 minutos y 30 segundos
-                    tiempoDemonio = 210f;    // 3.5 minutos (valor original)
+                    tiempoDemonio = 270f;    // 4 miinutos y 30 segundos
                     if (GameManager.instancia != null && GameManager.instancia.altavocesArreglados)
                     {
                         tiempoDemonio = tiempoDemonio + 30f;

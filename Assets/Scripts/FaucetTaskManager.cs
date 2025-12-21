@@ -98,6 +98,9 @@ public class FaucetTaskManager : MonoBehaviour
     // Mostrar mensaje de interacción en pantalla
     void OnGUI()
     {
+        if (Time.timeScale == 0f)
+            return;
+
         if (cerca && grifoActual != null && !grifoActual.EstaCerrado)
         {
             GUIStyle estilo = new GUIStyle(GUI.skin.label);

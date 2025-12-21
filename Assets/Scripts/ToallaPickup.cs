@@ -175,6 +175,9 @@ public class ToallaPickup : MonoBehaviour
     // GUI para mostrar mensajes en pantalla
     void OnGUI()
     {
+        if (Time.timeScale == 0f)
+            return;
+
         GUIStyle estilo = new GUIStyle(GUI.skin.label);
         estilo.fontSize = 40;
         estilo.normal.textColor = Color.white;
