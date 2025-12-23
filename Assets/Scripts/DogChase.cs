@@ -18,6 +18,9 @@ public class DogChase : MonoBehaviour
     public GameObject TelefonoCanvas;
     public GameObject VentiladorCanvas;
     public GameObject TermometroCanvas;
+
+    private DogSoundManager soundManager;
+
     void Start()
     {
         if (GameManager.instancia != null && GameManager.instancia.perroSacado)
@@ -35,6 +38,8 @@ public class DogChase : MonoBehaviour
 
         // Guardar rotación inicial
         initialRotation = transform.rotation;
+        soundManager = GetComponent<DogSoundManager>();
+
     }
 
     void Update()
@@ -79,20 +84,27 @@ public class DogChase : MonoBehaviour
     // Se llama cuando el temporizador llega a cero
     void OnTimerExpired()
     {
-        // Si el jugador interactuó, reiniciar el temporizador
         if (hasInteracted)
         {
+            // 🔊 Sonido cuando SÍ hemos interactuado
+            if (soundManager != null)
+                soundManager.PlayInteractSound();
+
             hasInteracted = false;
             timerScript.RestartTimer();
             Debug.Log("Temporizador reiniciado tras interacción");
         }
         else
         {
-            // Si no interactuó, el perro empieza a perseguir
+            // 🔊 Sonido cuando NO hemos interactuado
+            if (soundManager != null)
+                soundManager.PlayNoInteractSound();
+
             timerScript.isChasing = true;
             Debug.Log("¡El enemigo comienza la persecución!");
         }
     }
+
 
     // Cuando el perro colisiona con el jugador
     void OnTriggerEnter(Collider other)

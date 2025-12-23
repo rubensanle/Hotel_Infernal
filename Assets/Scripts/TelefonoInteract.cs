@@ -11,6 +11,7 @@ public class TelefonoInteract : MonoBehaviour
     public GameObject canvasTelefono;             // Canvas del teléfono
     public TMP_InputField inputCodigo;            // Campo de entrada para el código
     public Button botonConfirmar;                 // Botón de confirmación
+    public Button botonCancel;
 
     public DemonBehaviour2 demonio2;              // Referencia al segundo demonio
     public PlayerMovement playerMovement;         // Referencia al jugador
@@ -24,6 +25,7 @@ public class TelefonoInteract : MonoBehaviour
         // Configurar UI al inicio
         canvasTelefono.SetActive(false);
         botonConfirmar.onClick.AddListener(ValidarCodigo);
+        botonCancel.onClick.AddListener(CerrarCanvas);
     }
 
     void Update()
@@ -81,6 +83,8 @@ public class TelefonoInteract : MonoBehaviour
     {
         canvasTelefono.SetActive(false);
         abierto = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     // Método para verificar si la tarea está completada

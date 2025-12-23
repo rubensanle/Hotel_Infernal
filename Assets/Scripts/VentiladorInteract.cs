@@ -10,6 +10,7 @@ public class VentiladorInteract : MonoBehaviour
     public TMP_Text textoTiempo;                  // Texto que muestra el tiempo
     public TMP_Dropdown dropdownPotencia;         // Dropdown para seleccionar potencia
     public Button botonConfirmar;                 // Botón de confirmación
+    public Button botonCancel;
 
     [Header("Referencias externas")]
     public DemonBehaviour2 demonio2;              // Referencia al segundo demonio
@@ -30,6 +31,7 @@ public class VentiladorInteract : MonoBehaviour
         sliderTiempo.onValueChanged.AddListener(ActualizarTiempo);
         dropdownPotencia.onValueChanged.AddListener(ActualizarPotencia);
         botonConfirmar.onClick.AddListener(ValidarVentilador);
+        botonCancel.onClick.AddListener(CerrarCanvas);
         ActualizarTiempo(sliderTiempo.value);
         ActualizarPotencia(dropdownPotencia.value);
     }
@@ -101,6 +103,8 @@ public class VentiladorInteract : MonoBehaviour
     {
         canvasVentilador.SetActive(false);
         abierto = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     // Método para verificar si la tarea está completada

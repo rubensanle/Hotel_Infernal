@@ -9,6 +9,8 @@ public class TermometroInteract : MonoBehaviour
     public Slider sliderTemperatura;              // Slider para seleccionar temperatura
     public TMP_Text textoTemperatura;             // Texto que muestra la temperatura
     public Button botonConfirmar;                 // Botón de confirmación
+    public Button botonCancel;
+
 
     [Header("Rango correcto")]
     public float minCorrecto = 23f;               // Temperatura mínima correcta
@@ -27,6 +29,7 @@ public class TermometroInteract : MonoBehaviour
         canvasTermometro.SetActive(false);
         sliderTemperatura.onValueChanged.AddListener(ActualizarTexto);
         botonConfirmar.onClick.AddListener(ValidarTemperatura);
+        botonCancel.onClick.AddListener(CerrarCanvas);
     }
 
     void Update()
@@ -89,6 +92,8 @@ public class TermometroInteract : MonoBehaviour
     {
         canvasTermometro.SetActive(false);
         abierto = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     // Método para verificar si la tarea está completada

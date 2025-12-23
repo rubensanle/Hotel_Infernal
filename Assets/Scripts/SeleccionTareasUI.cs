@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using TMPro;
 
 public class SeleccionTareasUI : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class SeleccionTareasUI : MonoBehaviour
     [Header("UI - Otros")]
     public TMP_Text puntosTexto;
     public Button btnContinuarNoche;    // Botón para confirmar y pasar a la noche
+    public Button btnBackToMenu;    // Botón para confirmar y pasar a la noche
     public TMP_Dropdown dificultadDropdown; // 🔄 NUEVO: Dropdown de dificultad
 
     [Header("Config")]
@@ -55,9 +57,8 @@ public class SeleccionTareasUI : MonoBehaviour
         btnPerroAlimentado.onClick.AddListener(() => ToggleTarea(ref perroAlimentadoOn, costePerroAlimentado, (s) => GameManager.instancia.perroAlimentado = s, btnPerroAlimentado));
         btnRelojes.onClick.AddListener(() => ToggleTarea(ref relojesOn, costeRelojes, (s) => GameManager.instancia.relojesArreglados = s, btnRelojes));
         btnAltavoces.onClick.AddListener(() => ToggleTarea(ref altavocesOn, costeAltavoces, (s) => GameManager.instancia.altavocesArreglados = s, btnAltavoces));
-
-        // Suscribir botón de continuar
         btnContinuarNoche.onClick.AddListener(ConfirmarSeleccion);
+        btnBackToMenu.onClick.AddListener(BackToMainMenu);
     }
 
     // Método genérico para alternar tareas con botones
@@ -154,6 +155,30 @@ public class SeleccionTareasUI : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene("Hotel");
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+
+    public void BackToMainMenu()
+    {
+        {
+            Time.timeScale = 1f;
+            AudioListener.pause = false; // aseguramos que el audio vuelve
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
+            GameTaskManager taskManager = FindFirstObjectByType<GameTaskManager>();
+            if (taskManager != null)
+            {
+                taskManager.ResetAllTasks();
+            }
+
+            // Reiniciar estados del GameManager para empezar desde cero
+            if (GameManager.instancia != null)
+            {
+                GameManager.instancia.ResetGame();
+            }
+
+            SceneManager.LoadScene("MainMenuControlador");
+        }
     }
 }
 
