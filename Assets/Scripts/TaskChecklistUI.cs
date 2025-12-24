@@ -1,5 +1,5 @@
-using UnityEngine;
 using TMPro;   // Para usar TextMeshProUGUI
+using UnityEngine;
 
 public class TaskChecklistTMP : MonoBehaviour
 {
@@ -31,11 +31,16 @@ public class TaskChecklistTMP : MonoBehaviour
     public TermometroInteract termometro;
     public VentiladorInteract ventilador;
 
+    [Header("Sonidos")]
+    public AudioSource audioSource;       // AudioSource del jugador
+    public AudioClip gruñidos;
+
     void Start()
     {
         // Nada más empezar la escena, el Canvas está oculto
-        if (Indice != null)
+        if (Indice != null) { 
             Indice.SetActive(false);
+         }
     }
 
     void Update()
@@ -43,9 +48,10 @@ public class TaskChecklistTMP : MonoBehaviour
         // Abrir/cerrar con la tecla M
         if (Input.GetKeyDown(KeyCode.M))
         {
-            if (Indice != null)
+            if (Indice != null && audioSource != null)
             {
                 Indice.SetActive(!Indice.activeSelf);
+                audioSource.PlayOneShot(gruñidos);
                 Debug.Log("Indice alternado con M");
             }
         }
@@ -95,6 +101,7 @@ public class TaskChecklistTMP : MonoBehaviour
         if (tareaVentilador != null)
             tareaVentilador.color = ventilador != null && ventilador.TareaCompletada() ? Color.green : Color.red;
     }
+
 }
 
 

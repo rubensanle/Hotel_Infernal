@@ -1,25 +1,23 @@
 using UnityEngine;
+using UnityEngine;
 using UnityEngine.AI;
 
 // Script que controla el comportamiento de un perro que persigue al jugador según un temporizador
 public class DogChase : MonoBehaviour
 {
-    public Transform player;                 // Referencia al jugador
-    private DogTimer timerScript;            // Script del temporizador del perro
-    private NavMeshAgent agent;              // Agente de navegación
-    public GameOverUITMP gameOverUI;         // UI de Game Over
-    private Quaternion initialRotation;       // Rotación inicial para cuando no persigue
-
-    public float interactionDistance = 2f;    // Distancia para permitir interacción
-    private bool isPlayerNearby = false;      // Si el jugador está lo suficientemente cerca
-    private bool hasInteracted = false;       // Para saber si el jugador ya interactuó
+    public Transform player; // Referencia al jugador
+    private DogTimer timerScript; // Script del temporizador del perro
+    private NavMeshAgent agent; // Agente de navegación
+    public GameOverUITMP gameOverUI; // UI de Game Over
+    private Quaternion initialRotation; // Rotación inicial para cuando no persigue
+    public float interactionDistance = 2f; // Distancia para permitir interacción
+    private bool isPlayerNearby = false; // Si el jugador está lo suficientemente cerca
+    private bool hasInteracted = false; // Para saber si el jugador ya interactúo
 
     public GameObject Indice;
     public GameObject TelefonoCanvas;
     public GameObject VentiladorCanvas;
     public GameObject TermometroCanvas;
-
-    private DogSoundManager soundManager;
 
     void Start()
     {
@@ -29,8 +27,8 @@ public class DogChase : MonoBehaviour
             return;
         }
 
-            // Obtener referencias necesarias
-            timerScript = GetComponent<DogTimer>();
+        // Obtener referencias necesarias
+        timerScript = GetComponent<DogTimer>();
         agent = GetComponent<NavMeshAgent>();
 
         // Suscripción al evento de que el temporizador acabe
@@ -38,8 +36,6 @@ public class DogChase : MonoBehaviour
 
         // Guardar rotación inicial
         initialRotation = transform.rotation;
-        soundManager = GetComponent<DogSoundManager>();
-
     }
 
     void Update()
@@ -72,10 +68,8 @@ public class DogChase : MonoBehaviour
             if (direction != Vector3.zero)
             {
                 Quaternion targetRotation = Quaternion.LookRotation(direction);
-
                 // Corrección manual de rotación según la orientación del modelo 3D
                 Quaternion correction = Quaternion.Euler(-90f, 10f, transform.rotation.eulerAngles.z);
-
                 transform.rotation = targetRotation * correction;
             }
         }
@@ -86,25 +80,16 @@ public class DogChase : MonoBehaviour
     {
         if (hasInteracted)
         {
-            // 🔊 Sonido cuando SÍ hemos interactuado
-            if (soundManager != null)
-                soundManager.PlayInteractSound();
-
             hasInteracted = false;
             timerScript.RestartTimer();
             Debug.Log("Temporizador reiniciado tras interacción");
         }
         else
         {
-            // 🔊 Sonido cuando NO hemos interactuado
-            if (soundManager != null)
-                soundManager.PlayNoInteractSound();
-
             timerScript.isChasing = true;
             Debug.Log("¡El enemigo comienza la persecución!");
         }
     }
-
 
     // Cuando el perro colisiona con el jugador
     void OnTriggerEnter(Collider other)
@@ -141,7 +126,6 @@ public class DogChase : MonoBehaviour
             style.fontSize = 36;
             style.normal.textColor = Color.white;
             style.alignment = TextAnchor.MiddleCenter;
-
             Rect rect = new Rect(Screen.width / 2 - 250, Screen.height - 120, 500, 60);
             GUI.Label(rect, "Presiona E para interactuar", style);
         }
@@ -153,12 +137,8 @@ public class DogChase : MonoBehaviour
             timerStyle.fontSize = 40;
             timerStyle.normal.textColor = Color.red;
             timerStyle.alignment = TextAnchor.UpperRight;
-
             Rect timerRect = new Rect(Screen.width - 520, 40, 400, 50);
             GUI.Label(timerRect, "Tiempo perro: " + timerScript.GetTimeRemaining().ToString("F1") + "s", timerStyle);
         }
     }
-
-
-
 }
