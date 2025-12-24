@@ -1,6 +1,7 @@
-using UnityEngine;
-using TMPro;
 using System.Collections;
+using TMPro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CanvasStoryController : MonoBehaviour
 {
@@ -125,10 +126,12 @@ public class CanvasStoryController : MonoBehaviour
             if (currentCanvas >= storyCanvases.Length)
             {
                 Debug.Log("Historia terminada");
+                SceneManager.LoadScene("MainMenuControlador");
                 return;
             }
 
             LoadCanvas(currentCanvas);
         }
     }
+
 }
