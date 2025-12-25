@@ -77,7 +77,6 @@ public class CanvasStoryController : MonoBehaviour
     {
         isTyping = true;
 
-        // 🔊 INICIO DEL AUDIO EN LOOP
         if (typeSound != null)
         {
             audioSource.clip = typeSound;
@@ -91,7 +90,6 @@ public class CanvasStoryController : MonoBehaviour
             yield return new WaitForSeconds(typeSpeed);
         }
 
-        // 🔇 DETENER AUDIO AL TERMINAR
         audioSource.Stop();
 
         isTyping = false;
@@ -101,7 +99,6 @@ public class CanvasStoryController : MonoBehaviour
     {
         isTyping = false;
 
-        // 🔇 DETENER AUDIO SI SE COMPLETA MANUALMENTE
         audioSource.Stop();
 
         TextMeshProUGUI textUI = textsInCanvas[currentText];

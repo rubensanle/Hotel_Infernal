@@ -283,11 +283,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3323951681386833244, guid: 1ed9abc2bdbee22478b2f261d9201c48, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3323951681386833244, guid: 1ed9abc2bdbee22478b2f261d9201c48, type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3323951681386833244, guid: 1ed9abc2bdbee22478b2f261d9201c48, type: 3}
       propertyPath: m_Color.r
@@ -304,6 +304,22 @@ PrefabInstance:
     - target: {fileID: 3970646059936912092, guid: 1ed9abc2bdbee22478b2f261d9201c48, type: 3}
       propertyPath: m_AnchorMin.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4079881177398616617, guid: 1ed9abc2bdbee22478b2f261d9201c48, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4079881177398616617, guid: 1ed9abc2bdbee22478b2f261d9201c48, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4079881177398616617, guid: 1ed9abc2bdbee22478b2f261d9201c48, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4079881177398616617, guid: 1ed9abc2bdbee22478b2f261d9201c48, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
       objectReference: {fileID: 0}
     - target: {fileID: 4287403892597430020, guid: 1ed9abc2bdbee22478b2f261d9201c48, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
@@ -341,6 +357,30 @@ PrefabInstance:
       propertyPath: m_text
       value: MENU DE OPCIONES
       objectReference: {fileID: 0}
+    - target: {fileID: 4920483617942486069, guid: 1ed9abc2bdbee22478b2f261d9201c48, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4920483617942486069, guid: 1ed9abc2bdbee22478b2f261d9201c48, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.082383364
+      objectReference: {fileID: 0}
+    - target: {fileID: 4920483617942486069, guid: 1ed9abc2bdbee22478b2f261d9201c48, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4920483617942486069, guid: 1ed9abc2bdbee22478b2f261d9201c48, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278195711
+      objectReference: {fileID: 0}
+    - target: {fileID: 5492844356588815304, guid: 1ed9abc2bdbee22478b2f261d9201c48, type: 3}
+      propertyPath: m_Color.b
+      value: 0.015686274
+      objectReference: {fileID: 0}
+    - target: {fileID: 5492844356588815304, guid: 1ed9abc2bdbee22478b2f261d9201c48, type: 3}
+      propertyPath: m_Color.g
+      value: 0.20384653
+      objectReference: {fileID: 0}
     - target: {fileID: 5950763752023397641, guid: 1ed9abc2bdbee22478b2f261d9201c48, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -366,8 +406,24 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6692211651533779449, guid: 1ed9abc2bdbee22478b2f261d9201c48, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6692211651533779449, guid: 1ed9abc2bdbee22478b2f261d9201c48, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.18753722
+      objectReference: {fileID: 0}
+    - target: {fileID: 6692211651533779449, guid: 1ed9abc2bdbee22478b2f261d9201c48, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6692211651533779449, guid: 1ed9abc2bdbee22478b2f261d9201c48, type: 3}
       propertyPath: m_fontSizeBase
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6692211651533779449, guid: 1ed9abc2bdbee22478b2f261d9201c48, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278202623
       objectReference: {fileID: 0}
     - target: {fileID: 7291672697148721318, guid: 1ed9abc2bdbee22478b2f261d9201c48, type: 3}
       propertyPath: m_AnchorMax.x
@@ -466,8 +522,20 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8511001824157191593, guid: 1ed9abc2bdbee22478b2f261d9201c48, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.015686274
+      objectReference: {fileID: 0}
+    - target: {fileID: 8511001824157191593, guid: 1ed9abc2bdbee22478b2f261d9201c48, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.19260533
+      objectReference: {fileID: 0}
+    - target: {fileID: 8511001824157191593, guid: 1ed9abc2bdbee22478b2f261d9201c48, type: 3}
       propertyPath: m_fontSizeBase
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8511001824157191593, guid: 1ed9abc2bdbee22478b2f261d9201c48, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278465023
       objectReference: {fileID: 0}
     - target: {fileID: 9054780396427915417, guid: 1ed9abc2bdbee22478b2f261d9201c48, type: 3}
       propertyPath: m_Value
@@ -718,8 +786,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278512639
-  m_fontColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    rgba: 4278461951
+  m_fontColor: {r: 1, g: 0.14452161, b: 0.015686274, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1308,7 +1376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.1, g: 0.1, b: 0.1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1390,7 +1458,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Volver
+  m_text: VOLVER
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
@@ -1399,8 +1467,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294902015
-  m_fontColor: {r: 1, g: 0, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1539,8 +1607,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278512639
-  m_fontColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    rgba: 4278199551
+  m_fontColor: {r: 1, g: 0.14044964, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2182,7 +2250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  m_Color: {r: 1, g: 0.17452757, b: 0.015686274, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2612,7 +2680,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: HOTEL INFERNAL
+  m_text: "\xBFEST\xC1S PREPARADO PARA LA NOCHE?"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -2744,7 +2812,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
