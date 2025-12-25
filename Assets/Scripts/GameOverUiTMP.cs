@@ -8,7 +8,11 @@ public class GameOverUITMP : MonoBehaviour
 {
     public TextMeshProUGUI gameOverText;   // Texto principal de "Game Over"
     public Image fondoNegro;               // Imagen oscura detrás del texto
-    public TextMeshProUGUI reiniciarTexto; // Texto que indica cómo reiniciar
+    public TextMeshProUGUI reiniciarTexto; // Texto que indica cómo reinicia
+
+    [Header("Audio de muerte")]
+    public AudioClip[] sonidosMuerte;      // 🎵 ARRAY de sonidos de muerte
+    private AudioSource audioSource;       // AudioSource interno
 
     private bool mostrarGameOver = false;  // Controla si el estado de Game Over está activo
 
@@ -18,6 +22,16 @@ public class GameOverUITMP : MonoBehaviour
         gameOverText.enabled = false;
         fondoNegro.enabled = false;
         reiniciarTexto.enabled = false;
+
+        // Crear o recuperar AudioSource
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+            audioSource = gameObject.AddComponent<AudioSource>();
+
+        audioSource.playOnAwake = false;
+        audioSource.loop = false;
+        audioSource.spatialBlend = 0f; // 2D
+        audioSource.ignoreListenerPause = true; // 🔥 Permite sonar aunque el juego esté pausado
     }
 
     void Update()
@@ -44,17 +58,28 @@ public class GameOverUITMP : MonoBehaviour
 
             SceneManager.LoadScene("PruebaDeMenuDeDia");
         }
-    
     }
 
     // Activa la interfaz de Game Over
-    public void ShowGameOverMessage(){
-    gameOverText.enabled = true;   // Muestra el texto principal
-    fondoNegro.enabled = true;     // Muestra el fondo negro
-    reiniciarTexto.enabled = true; // Muestra el mensaje de reinicio
-    mostrarGameOver = true;        // Cambia el estado
+    public void ShowGameOverMessage()
+    {
+        // 🔊 Reproducir sonido de muerte aleatorio
+        if (sonidosMuerte != null && sonidosMuerte.Length > 0)
+        {
+            int index = Random.Range(0, sonidosMuerte.Length);
+            audioSource.PlayOneShot(sonidosMuerte[index]);
+        }
 
-    Time.timeScale = 0f;           // Pausa el juego completo
-    AudioListener.pause = true;
+        // Mostrar UI
+        gameOverText.enabled = true;
+        fondoNegro.enabled = true;
+        reiniciarTexto.enabled = true;
+        mostrarGameOver = true;
+
+        // Pausar el juego
+        Time.timeScale = 0f;
+
+        // 🔇 Pausar TODO el audio excepto el sonido de muerte
+        AudioListener.pause = true;
     }
 }

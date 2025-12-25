@@ -10723,22 +10723,6 @@ PrefabInstance:
       propertyPath: sonidoMuerte
       value: 
       objectReference: {fileID: 8300000, guid: 58fab159d37ec3b46b0804cb9eef2879, type: 3}
-    - target: {fileID: 1108750312858931761, guid: 8be63c278371afc45a9c4f77bcca40df, type: 3}
-      propertyPath: sonidosMuerte.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1108750312858931761, guid: 8be63c278371afc45a9c4f77bcca40df, type: 3}
-      propertyPath: 'sonidosMuerte.Array.data[0]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 58fab159d37ec3b46b0804cb9eef2879, type: 3}
-    - target: {fileID: 1108750312858931761, guid: 8be63c278371afc45a9c4f77bcca40df, type: 3}
-      propertyPath: 'sonidosMuerte.Array.data[1]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 58fab159d37ec3b46b0804cb9eef2879, type: 3}
-    - target: {fileID: 1108750312858931761, guid: 8be63c278371afc45a9c4f77bcca40df, type: 3}
-      propertyPath: 'sonidosMuerte.Array.data[2]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 58fab159d37ec3b46b0804cb9eef2879, type: 3}
     - target: {fileID: 4185018533479274406, guid: 8be63c278371afc45a9c4f77bcca40df, type: 3}
       propertyPath: m_Pivot.x
       value: 0
