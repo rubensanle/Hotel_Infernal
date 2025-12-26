@@ -14,12 +14,16 @@ public class InitialMusic : MonoBehaviour
 
         // Configuración del AudioSource
         audioSource.clip = musicaDeFondo;
-        audioSource.loop = true;          // 🔁 Repetir en bucle
+        audioSource.loop = true;          
         audioSource.playOnAwake = false;  // No sonar automáticamente
         audioSource.spatialBlend = 0f;    // 2D
         audioSource.volume = 0.3f;
         // Reproducir música
         audioSource.Play();
+    }
+
+    public void SetVolume(float value) { 
+        audioSource.volume = value; 
     }
 
     // Llamado desde el botón ANTES de cambiar de escena
