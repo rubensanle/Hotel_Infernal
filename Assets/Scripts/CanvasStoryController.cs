@@ -22,6 +22,10 @@ public class CanvasStoryController : MonoBehaviour
 
     private string fullCurrentText = "";
 
+    // ⭐ NUEVO: salto manteniendo espacio
+    private float holdTime = 0f;
+    public float requiredHoldTime = 2f; // segundos para saltar historia
+
     void Start()
     {
         LoadCanvas(0);
@@ -29,6 +33,10 @@ public class CanvasStoryController : MonoBehaviour
 
     void Update()
     {
+        // ⭐ NUEVO: mantener ESPACIO para saltar historia
+        DetectarSaltoConEspacio();
+
+        // Clic o espacio para avanzar texto
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
             if (isTyping)
@@ -39,6 +47,24 @@ public class CanvasStoryController : MonoBehaviour
             {
                 NextTextOrCanvas();
             }
+        }
+    }
+
+    // ⭐ NUEVO: función para detectar mantener espacio
+    void DetectarSaltoConEspacio()
+    {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            holdTime += Time.deltaTime;
+
+            if (holdTime >= requiredHoldTime)
+            {
+                SceneManager.LoadScene("MainMenuControlador");
+            }
+        }
+        else
+        {
+            holdTime = 0f; // si suelta espacio, reinicia
         }
     }
 
@@ -130,5 +156,4 @@ public class CanvasStoryController : MonoBehaviour
             LoadCanvas(currentCanvas);
         }
     }
-
 }
