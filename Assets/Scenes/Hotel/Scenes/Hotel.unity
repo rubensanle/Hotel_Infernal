@@ -3269,6 +3269,11 @@ PrefabInstance:
       value: 4278190080
       objectReference: {fileID: 0}
     - target: {fileID: 3422440489138249043, guid: 1043bf70e288d904bba839ac45d5ff87, type: 3}
+      propertyPath: m_text
+      value: "- Recoge las 5 latas tiradas por el hotel y tiralas a la basura en
+        el almac\xE9n --> Alfredo Cruje"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422440489138249043, guid: 1043bf70e288d904bba839ac45d5ff87, type: 3}
       propertyPath: m_fontColor.b
       value: 0
       objectReference: {fileID: 0}
@@ -3365,6 +3370,11 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3835610221686739787, guid: 1043bf70e288d904bba839ac45d5ff87, type: 3}
+      propertyPath: m_text
+      value: "- Lleva la toalla del almacen a la ba\xF1era de la habitaci\xF3n 1
+        --> Babeduck"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3835610221686739787, guid: 1043bf70e288d904bba839ac45d5ff87, type: 3}
       propertyPath: m_fontColor.b
       value: 0
       objectReference: {fileID: 0}
@@ -3425,6 +3435,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 265475425}
     - target: {fileID: 5317734745060913998, guid: 1043bf70e288d904bba839ac45d5ff87, type: 3}
+      propertyPath: m_text
+      value: "- Ajusta la potencia (3) y tiempo (90 mins) del ventilador de la habitaci\xF3n
+        1 --> Babeduck"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5317734745060913998, guid: 1043bf70e288d904bba839ac45d5ff87, type: 3}
       propertyPath: m_fontColor.b
       value: 0
       objectReference: {fileID: 0}
@@ -3441,6 +3456,10 @@ PrefabInstance:
       value: 4278190080
       objectReference: {fileID: 0}
     - target: {fileID: 5335670404823453312, guid: 1043bf70e288d904bba839ac45d5ff87, type: 3}
+      propertyPath: m_text
+      value: '- Ajusta la temperatura del hotel entre 23 y 25 grados --> Babeduck'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5335670404823453312, guid: 1043bf70e288d904bba839ac45d5ff87, type: 3}
       propertyPath: m_fontColor.b
       value: 0
       objectReference: {fileID: 0}
@@ -3455,6 +3474,10 @@ PrefabInstance:
     - target: {fileID: 5335670404823453312, guid: 1043bf70e288d904bba839ac45d5ff87, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4278190080
+      objectReference: {fileID: 0}
+    - target: {fileID: 5620278988637031128, guid: 1043bf70e288d904bba839ac45d5ff87, type: 3}
+      propertyPath: m_text
+      value: "\xCDNDICE DE TAREAS"
       objectReference: {fileID: 0}
     - target: {fileID: 5620278988637031128, guid: 1043bf70e288d904bba839ac45d5ff87, type: 3}
       propertyPath: m_fontColor.b
@@ -3473,6 +3496,11 @@ PrefabInstance:
       value: 4278196974
       objectReference: {fileID: 0}
     - target: {fileID: 6549471641682940641, guid: 1043bf70e288d904bba839ac45d5ff87, type: 3}
+      propertyPath: m_text
+      value: "- Introduce el c\xF3digo escondido por el hotel en el tel\xE9fono -->
+        Babeduck"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6549471641682940641, guid: 1043bf70e288d904bba839ac45d5ff87, type: 3}
       propertyPath: m_fontColor.b
       value: 0
       objectReference: {fileID: 0}
@@ -3535,6 +3563,10 @@ PrefabInstance:
     - target: {fileID: 7886533808418806344, guid: 1043bf70e288d904bba839ac45d5ff87, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4278190080
+      objectReference: {fileID: 0}
+    - target: {fileID: 7927618168799162246, guid: 1043bf70e288d904bba839ac45d5ff87, type: 3}
+      propertyPath: m_text
+      value: "- Haz la cama de la habitaci\xF3n 3 --> Alfredo Cruje"
       objectReference: {fileID: 0}
     - target: {fileID: 7927618168799162246, guid: 1043bf70e288d904bba839ac45d5ff87, type: 3}
       propertyPath: m_fontColor.b
