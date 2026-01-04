@@ -26905,6 +26905,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1103801430}
     - target: {fileID: 239251638079152524, guid: 471ec89e5298b3c4f8725380cd6f559b, type: 3}
+      propertyPath: umbralDot
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 239251638079152524, guid: 471ec89e5298b3c4f8725380cd6f559b, type: 3}
       propertyPath: camaraJugador
       value: 
       objectReference: {fileID: 1103801431}
