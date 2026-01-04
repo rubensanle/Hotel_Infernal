@@ -62,6 +62,7 @@ public class DemonioMiradaFP : MonoBehaviour
         if (meMira)
         {
             agente.isStopped = true;
+            agente.velocity = Vector3.zero; // ← Frena en seco
         }
         else
         {
