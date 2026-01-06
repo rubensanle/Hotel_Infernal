@@ -21,7 +21,7 @@ public class PauseManager : MonoBehaviour
     void Update()
     {
         // Detectar tecla Escape para alternar pausa
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             if (isPaused)
             {
